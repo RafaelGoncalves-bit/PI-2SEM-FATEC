@@ -35,48 +35,6 @@ A entrevista possibilitou compreender as necessidades e expectativas do usuário
 
 ---
 
-## 🧩 Requisitos Funcionais (RF)
-
-- **RF01:** Cadastro de clientes *(Essencial)*  
-- **RF02:** Registro de tipo de serviço por cliente *(Essencial)*  
-- **RF03:** Lembrete anual de limpeza *(Desejável)*  
-- **RF04:** Funcionar no celular e computador *(Essencial)*  
-- **RF05:** Registro do período de trabalho da empresa *(Desejável)*  
-- **RF06:** Agendamento de serviços *(Essencial)*  
-- **RF07:** Aprovação de solicitações de serviço *(Desejável)*  
-- **RF08:** Calendário de horários disponíveis *(Essencial)*  
-- **RF09:** Consulta de disponibilidade *(Essencial)*  
-- **RF10:** Geração de orçamentos *(Desejável)*  
-- **RF11:** Histórico de serviços por cliente *(Essencial)*  
-
----
-
-## ⚙️ Requisitos Não Funcionais (RNF)
-
-- **RNF01:** Interface simples e intuitiva *(Essencial)*  
-- **RNF02:** Compatível com desktop e mobile *(Essencial)*  
-- **RNF03:** Operações rápidas (≤ 3 segundos) *(Desejável)*  
-- **RNF04:** Segurança e proteção dos dados *(Essencial)*  
-- **RNF05:** Backup automático *(Desejável)*  
-- **RNF06:** Notificações confiáveis *(Desejável)*  
-- **RNF07:** Escalabilidade *(Desejável)*  
-- **RNF08:** Disponibilidade 24h *(Essencial)*  
-- **RNF09:** Fácil manutenção *(Desejável)*  
-- **RNF10:** Acessibilidade visual *(Desejável)*  
-
----
-
-## 📆 Diário de Bordo (Resumo)
-
-- **09/09/2025:** Definição do nome **TechNova** e das funções do grupo (Rafael – PO, Caua – Backend, Matheus – BD, Kauã – Frontend, Ademar – Documentação).  
-- **15/09/2025:** Reunião para definir o tipo de sistema e público-alvo.  
-- **21/09/2025:** Levantamento de requisitos realizado por Kauã (entrevista e acompanhamento).  
-- **28/09/2025:** Organização e classificação dos requisitos (essenciais e desejáveis).  
-- **05/10/2025:** Início da modelagem do sistema e estrutura do banco de dados.  
-- **13/10/2025:** Documentação do escopo e criação do README do projeto.  
-
----
-
 ## 🧑‍💻 Equipe TechNova
 
 - 🧠 **Rafael Lima** – Product Owner (PO)  
