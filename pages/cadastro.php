@@ -16,7 +16,7 @@
                 <div>
                     <h1 class="text-center">Cadastro</h1>
                 </div>
-                <form action="./index.php" method="POST" class="mt-2">
+                <form action="./login.php" method="POST" class="mt-2">
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome</label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
