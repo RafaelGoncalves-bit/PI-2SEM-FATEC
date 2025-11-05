@@ -1,4 +1,82 @@
-<footer class="rodape">
-    <nav class="nav flex-column ">
+<footer class="rodape text-light" style="background: rgba(0, 80, 190, 0.85); backdrop-filter: blur(12px);">
+  <div class="container py-5">
+    <div class="row gy-4 align-items-center text-center text-md-start">
+      
+      <!-- Logo e descrição -->
+      <div class="col-md-4">
+        <img src="../img/logo.jpeg" alt="Logo XC Limpeza" width="70" class="rounded-circle shadow mb-2">
+        <h5 class="fw-bold">XC Limpeza</h5>
+        <p class="small">
+          Higienização profissional de estofados em <strong>Araras e região</strong>.  
+          Serviço realizado por <strong>Hércules Denilson Xavier</strong> com dedicação e produtos de qualidade.
+        </p>
+      </div>
 
-  </footer>
+      <!-- Serviços -->
+      <div class="col-md-4">
+        <h6 class="fw-bold text-uppercase mb-3"><i class="bi bi-tools"></i> Serviços</h6>
+        <p class="small mb-1">🛋️ Limpeza de Sofás</p>
+        <p class="small mb-1">💺 Limpeza de Poltronas</p>
+        <p class="small mb-1">🪑 Limpeza de Cadeiras</p>
+        <p class="small mb-1">🛏️ Limpeza de Colchões</p>
+        <p class="small mt-2 text-light opacity-75">Produtos biodegradáveis e hipoalergênicos 🌿</p>
+      </div>
+
+      <!-- Contato -->
+      <div class="col-md-4">
+        <h6 class="fw-bold text-uppercase mb-3"><i class="bi bi-chat-left-dots"></i> Contato</h6>
+        <p class="small m-0"><i class="bi bi-geo-alt-fill"></i> Araras e Região - SP</p>
+        <p class="small m-0"><i class="bi bi-envelope-fill"></i> denilsonx@gmail.com</p>
+        <p class="small m-0"><i class="bi bi-telephone-fill"></i> (19) 99856-6099</p>
+        <p class="small mt-2"><i class="bi bi-instagram"></i> 
+          <a href="https://www.instagram.com/xc_limpeza/" target="_blank" class="text-light text-decoration-none">@xc_limpeza</a>
+        </p>
+        <p class="small"><i class="bi bi-facebook"></i> 
+          <a href="https://www.facebook.com/herculesdenilson.xavier/" target="_blank" class="text-light text-decoration-none">Hércules Denilson Xavier</a>
+        </p>
+      </div>
+    </div>
+
+    <hr class="border-light opacity-50 mt-4">
+    <p class="small text-center mb-0">
+      © <span id="ano"></span> XC Limpeza — Todos os direitos reservados.
+    </p>
+  </div>
+
+  <!-- Bolha flutuante do WhatsApp -->
+  <a href="https://wa.me/5519998566099?text=Olá!%20Gostaria%20de%20um%20orçamento%20de%20limpeza%20de%20estofados."
+     target="_blank"
+     class="whatsapp-float"
+     title="Fale conosco no WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <style>
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: rgba(0, 200, 80, 0.9);
+      color: white;
+      border-radius: 50%;
+      width: 58px;
+      height: 58px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 999;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      background: rgba(0, 200, 80, 1);
+    }
+  </style>
+
+  <script>
+    document.getElementById('ano').textContent = new Date().getFullYear();
+  </script>
+</footer>
