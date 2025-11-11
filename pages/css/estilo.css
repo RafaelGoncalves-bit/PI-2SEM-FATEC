@@ -1,287 +1,208 @@
-/* ----------- BASE GLOBAL ----------- */
+/* ================================
+   ESTRUTURA GERAL DO SITE
+================================ */
 html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    font-family: "Poppins", Arial, sans-serif;
-    background: #f6f9ff;
-    color: #333;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f9fc;
+  color: #222;
+}
+
+main {
+  flex: 1;
+  margin-top: 40px;
+}
+
+/* ================================
+   NAVBAR
+================================ */
+body {
+  padding-top: 100px !important;
+}
+
+.azul-nav {
+  background-color: #004896 !important;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-brand {
+  font-weight: 600;
+  color: white !important;
+}
+
+.navbar-brand:hover {
+  color: #bcdcff !important;
+}
+
+.navbar-nav .nav-link {
+  color: white !important;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #bcdcff !important;
+  transform: scale(1.05);
+}
+
+/* ================================
+   TÍTULOS E SUBTÍTULOS
+================================ */
+.titulo-secao {
+  background: rgba(0, 72, 150, 0.15);
+  color: #004896;
+  padding: 12px 20px;
+  border-radius: 15px;
+  display: inline-block;
+  font-weight: 700;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.subtitulo-secao {
+  color: #004896;
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+/* ================================
+   CARROSSEL
+================================ */
+.img-carousel {
+  height: 280px !important; /* altura menor */
+  object-fit: cover !important;
+  border-radius: 10px;
+}
+
+.carousel-caption {
+  background: rgba(0, 72, 150, 0.6);
+  border-radius: 10px;
+  padding: 8px 16px;
+}
+
+.carousel-caption h2, .carousel-caption p {
+  color: white;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* ================================
+   SEÇÕES, CARDS E CONTEÚDOS
+================================ */
+.card-servico {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  transition: all 0.3s ease-in-out;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.card-servico:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.icon-servico {
+  font-size: 2rem;
+  color: #004896;
+  margin-bottom: 10px;
+}
+
+/* ================================
+   FORMULÁRIOS (Login, Cadastro, Agendar)
+================================ */
+.login-card {
+  background: #ffffff;
+  width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    width: 90vw;
+    padding: 20px;
   }
-  
-  main {
-    flex: 1;
-  }
-  
-  /* ----------- NAVBAR ----------- */
-  .navbar {
-    background: rgba(0, 50, 120, 0.55);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-    transition: background-color 0.4s ease, box-shadow 0.4s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    position: relative;
-    z-index: 1050 !important; /* Corrige cliques */
-  }
-  
-  .navbar.scrolled {
-    background: rgba(0, 50, 120, 0.9);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-  }
-  
-  .nav-link {
-    color: #ffffff !important;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  .nav-link:hover {
-    color: #cfe8ff !important;
-    text-shadow: 0 0 6px rgba(255,255,255,0.4);
-  }
-  
-  .dropdown-menu {
-    z-index: 1060 !important;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  }
-  .dropdown-item:hover {
-    background: rgba(0,80,190,0.1);
-  }
-  
-  /* ----------- BOTÕES ----------- */
-  .btn-primary {
-    background: linear-gradient(90deg, #0050be, #0042a3);
-    border: none;
-  }
-  .btn-primary:hover {
-    background: linear-gradient(90deg, #0042a3, #00378a);
-  }
-  .btn-success {
-    background: linear-gradient(90deg, #00a152, #009148);
-    border: none;
-  }
-  .btn-success:hover {
-    background: linear-gradient(90deg, #00893f, #007a36);
-  }
-  
-  /* ----------- SEÇÃO AZUL (INDEX) ----------- */
-  .info-azul {
-    background: linear-gradient(180deg, rgba(0,80,190,0.85), rgba(0,100,255,0.75));
-    color: white;
-    padding: 80px 20px;
-    text-align: center;
-  }
-  .info-azul h2 {
-    color: white;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-  .info-azul p {
-    max-width: 750px;
-    margin: 0 auto 20px;
-    font-size: 1.05rem;
-    line-height: 1.6;
-  }
-  
-  /* ----------- BENEFÍCIOS ----------- */
-  .beneficios-section {
-    background: rgba(255, 255, 255, 0.95);
-  }
-  .beneficio-card {
-    background: rgba(240, 247, 255, 0.9);
-    border-radius: 14px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-  .beneficio-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 25px rgba(0,0,0,0.12);
-  }
-  .beneficio-card h5 {
-    color: #003d99;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-  .beneficio-card p {
-    color: #333;
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-  
-  /* ----------- MISSÃO / VISÃO / VALORES ----------- */
-  .mvv-section {
-    background: rgba(0, 60, 150, 0.08);
-    padding: 60px 0;
-    text-align: center;
-  }
-  .mvv-section h3 {
-    font-size: 1.3rem;
-    color: #003d99;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-  .mvv-section p {
-    color: #333;
-    font-size: 0.95rem;
-    max-width: 300px;
-    margin: 0 auto;
-    line-height: 1.5;
-  }
-  .mvv-item {
-    padding: 15px;
-  }
-  
-  /* ----------- MAPA ----------- */
-  .mapa-container {
-    text-align: center;
-    margin: 40px auto;
-  }
-  .mapa-container h3 {
-    color: #003d99;
-    font-weight: 700;
-    margin-bottom: 15px;
-  }
-  .mapa-container iframe {
-    width: 85%;
-    height: 320px;
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-  }
-  
-  /* ----------- CARDS DE SERVIÇOS ----------- */
-  .card-servico {
-    background: rgba(255,255,255,0.9);
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .card-servico:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 25px rgba(0,0,0,0.1);
-  }
-  .card-servico img {
-    object-fit: cover;
-    height: 160px;
-    border-radius: 8px;
-  }
-  
-  /* ----------- RODAPÉ ----------- */
-  .rodape {
-    background: rgba(0, 80, 190, 0.8);
-    backdrop-filter: blur(10px);
-    color: #fff;
-    padding-top: 40px;
-  }
-  .rodape a {
-    color: #cfe4ff;
-  }
-  .rodape a:hover {
-    color: white;
-    text-decoration: underline;
-  }
-  
-  /* ----------- DÚVIDAS ----------- */
-  .duvidas-section {
-    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(235,243,255,0.9));
-    padding: 70px 0;
-  }
-  .duvida-card {
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-  .duvida-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12) !important;
-  }
-  .duvida-card h5 {
-    color: #0043b3;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-  .duvida-card p {
-    color: #333;
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-  
-  /* ----------- LOGIN / CADASTRO ----------- */
-  .login-card, .cadastro-card {
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-    padding: 2.5rem;
-    max-width: 420px;
-    width: 90%;
-    color: #333;
-  }
-  .login-card h1, .cadastro-card h1 {
-    color: #0043b3;
-    font-weight: 700;
-  }
-  .btn-login, .btn-cadastro {
-    background: linear-gradient(90deg, #006eff, #0048b1);
-    border: none;
-    color: #fff;
-  }
-  .btn-login:hover, .btn-cadastro:hover {
-    background: #003a8c;
-  }
-  .link-card {
-    display: block;
-    text-align: center;
-    margin-top: 1rem;
-    color: #0048b1;
-    text-decoration: none;
-  }
-  .link-card:hover {
-    text-decoration: underline;
-  }
-  
-  /* ----------- WHATSAPP FLOAT ----------- */
-  .whatsapp-float {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: rgba(0, 200, 80, 0.9);
-    color: white;
-    border-radius: 50%;
-    width: 58px;
-    height: 58px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    z-index: 999;
-  }
-  .whatsapp-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-    background: rgba(0, 200, 80, 1);
-  }
-  
-  /* ----------- RESPONSIVIDADE ----------- */
-  @media (max-width: 768px) {
-    .mvv-section h3 {
-      font-size: 1.1rem;
-    }
-    .info-azul h2 {
-      font-size: 1.6rem;
-    }
-    .mapa-container iframe {
-      height: 250px;
-      width: 90%;
-    }
-    .card-servico img {
-      height: 140px;
-    }
-    .login-card, .cadastro-card {
-      padding: 1.5rem;
-    }
-  }
-  
+}
+
+.link-card {
+  display: block;
+  margin-top: 8px;
+  color: #004896;
+  text-decoration: none;
+}
+
+.link-card:hover {
+  text-decoration: underline;
+}
+
+/* ================================
+   MAPA
+================================ */
+.map-embed {
+  border: 0;
+  border-radius: 12px;
+  width: 100%;
+  height: 320px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+}
+
+/* ================================
+   RODAPÉ (ajustes adicionais)
+================================ */
+.rodape {
+  background: rgba(0, 72, 150, 0.95);
+  color: #fff;
+  width: 100%;
+  padding: 15px 0;
+}
+
+.rodape p, .rodape a {
+  color: #dceaff;
+}
+
+.rodape a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* ================================
+   BOTÃO WHATSAPP (garantia de estilo)
+================================ */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 25px;
+  right: 25px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.whatsapp-float:hover {
+  background-color: #1ebc57;
+  transform: scale(1.1);
+}
+
+/* ================================
+   UTILITÁRIOS E AJUSTES
+================================ */
+.texto-centro { text-align: center; }
+.branco { color: white; }
+.flax { display: flex; }
