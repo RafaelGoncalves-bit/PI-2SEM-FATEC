@@ -13,25 +13,27 @@ require_once __DIR__ . '/../../config/db.php';
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?= BASE_URL ?>/view/servico/new.php">insert</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?= BASE_URL ?>/controller/ServicoController.php?acao=listar">index</a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Serviço
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="<?= BASE_URL ?>/controller/ServicoController.php?acao=listar">Index</a></li>
+            <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/servico/new.php">Insert</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Tamanho
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="<?= BASE_URL ?>/controller/TamanhoController.php?acao=listar">Index</a></li>
+            <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/tamanho/new.php">Insert</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
         </li>
       </ul>
       <form class="d-flex" role="search">
