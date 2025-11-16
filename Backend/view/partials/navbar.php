@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../config/db.php';
-require_once __DIR__ . '/header.php';
 ?>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -15,10 +14,10 @@ require_once __DIR__ . '/header.php';
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= BASE_URL ?>/view/servico/new.php">Link</a>
+          <a class="nav-link" href="<?= BASE_URL ?>/view/servico/new.php">insert</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= BASE_URL ?>/view/user">Login</a>
+          <a class="nav-link" href="<?= BASE_URL ?>/controller/ServicoController.php?acao=listar">index</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
