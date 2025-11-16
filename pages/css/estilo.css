@@ -1,208 +1,334 @@
-/* ================================
-   ESTRUTURA GERAL DO SITE
-================================ */
-html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f7f9fc;
-  color: #222;
+/* ------------------------------
+   PALETA E VARIÁVEIS GERAIS
+--------------------------------*/
+:root {
+  --azul-escuro: #004896;
+  --azul-medio: #2f6ebd;
+  --azul-claro: #e9f1ff;
+  --cinza-texto: #555;
+  --cinza-claro: #f5f7fa;
+  --branco: #ffffff;
+
+  --radius: 18px;
+  --shadow: 0 6px 22px rgba(0,0,0,0.08);
 }
 
-main {
-  flex: 1;
-  margin-top: 40px;
-}
-
-/* ================================
-   NAVBAR
-================================ */
+/* Fonte global */
 body {
-  padding-top: 100px !important;
+  font-family: "Inter", Arial, sans-serif;
+  background: #ffffff;
+  color: var(--cinza-texto);
 }
 
-.azul-nav {
-  background-color: #004896 !important;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+/* Títulos globais */
+.titulo-secao {
+  font-weight: 800;
+  color: var(--azul-escuro);
+  margin-bottom: 6px;
+  animation: fade-down 0.8s ease;
 }
 
-.navbar-brand {
-  font-weight: 600;
-  color: white !important;
+.subtitulo-secao {
+  font-size: 1.05rem;
+  color: #666;
+  animation: fade-up 0.8s ease;
 }
 
-.navbar-brand:hover {
-  color: #bcdcff !important;
+/* ------------------------------
+      ANIMAÇÕES GERAIS
+--------------------------------*/
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.navbar-nav .nav-link {
-  color: white !important;
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoom-soft {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-soft {
+  0% { box-shadow: 0 0 0 0 rgba(0,72,150,0.3); }
+  100% { box-shadow: 0 0 0 16px rgba(0,72,150,0); }
+}
+
+/* Entrada suave de seções */
+section, .card-servico, .galeria-card, .info-card, .form-card {
+  animation: fade-up 0.9s ease;
+}
+
+/* ------------------------------
+          NAVBAR
+--------------------------------*/
+.navbar {
+  background: var(--azul-escuro) !important;
+  box-shadow: var(--shadow);
+}
+
+.navbar a.nav-link {
+  color: #ffffff !important;
   font-weight: 500;
   transition: 0.3s;
 }
 
-.navbar-nav .nav-link:hover {
-  color: #bcdcff !important;
-  transform: scale(1.05);
+.navbar a.nav-link:hover {
+  color: #b7d3ff !important;
 }
-
-/* ================================
-   TÍTULOS E SUBTÍTULOS
-================================ */
-.titulo-secao {
-  background: rgba(0, 72, 150, 0.15);
-  color: #004896;
-  padding: 12px 20px;
-  border-radius: 15px;
-  display: inline-block;
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  border-radius: 8px;
   font-weight: 700;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.subtitulo-secao {
-  color: #004896;
-  font-size: 1.05rem;
-  font-weight: 500;
-  margin-bottom: 30px;
-}
 
-/* ================================
-   CARROSSEL
-================================ */
+/* ------------------------------
+      CARROSSEL INDEX
+--------------------------------*/
 .img-carousel {
-  height: 280px !important; /* altura menor */
-  object-fit: cover !important;
-  border-radius: 10px;
-}
-
-.carousel-caption {
-  background: rgba(0, 72, 150, 0.6);
-  border-radius: 10px;
-  padding: 8px 16px;
-}
-
-.carousel-caption h2, .carousel-caption p {
-  color: white;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-}
-
-/* ================================
-   SEÇÕES, CARDS E CONTEÚDOS
-================================ */
-.card-servico {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-  transition: all 0.3s ease-in-out;
-  border: 1px solid rgba(0,0,0,0.05);
-}
-
-.card-servico:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-}
-
-.icon-servico {
-  font-size: 2rem;
-  color: #004896;
-  margin-bottom: 10px;
-}
-
-/* ================================
-   FORMULÁRIOS (Login, Cadastro, Agendar)
-================================ */
-.login-card {
-  background: #ffffff;
-  width: 420px;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-@media (max-width: 480px) {
-  .login-card {
-    width: 90vw;
-    padding: 20px;
-  }
-}
-
-.link-card {
-  display: block;
-  margin-top: 8px;
-  color: #004896;
-  text-decoration: none;
-}
-
-.link-card:hover {
-  text-decoration: underline;
-}
-
-/* ================================
-   MAPA
-================================ */
-.map-embed {
-  border: 0;
-  border-radius: 12px;
-  width: 100%;
   height: 320px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+  object-fit: cover;
+  border-radius: var(--radius);
 }
 
-/* ================================
-   RODAPÉ (ajustes adicionais)
-================================ */
-.rodape {
-  background: rgba(0, 72, 150, 0.95);
-  color: #fff;
+.carousel-caption h2 {
+  font-weight: 700;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+}
+
+.carousel-caption p {
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* ------------------------------
+        CARDS GERAIS
+--------------------------------*/
+.card-servico,
+.galeria-card,
+.valor-card,
+.info-card,
+.form-card {
+  background: var(--branco);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: all .3s ease;
+}
+
+.card-servico:hover,
+.galeria-card:hover,
+.valor-card:hover,
+.info-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+/* Hovers com zoom */
+.galeria-card img:hover {
+  transform: scale(1.06);
+}
+
+.galeria-card img {
+  transition: 0.4s ease;
+  border-radius: var(--radius);
+}
+
+/* ------------------------------
+        FORMULÁRIOS
+--------------------------------*/
+.form-control {
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+
+.form-control:focus {
+  border-color: var(--azul-escuro);
+  box-shadow: 0 0 0 0.15rem rgba(0,72,150,0.25);
+}
+
+/* ------------------------------
+      BOTÕES
+--------------------------------*/
+.btn-primary {
+  background: var(--azul-escuro);
+  border: none;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: var(--azul-medio);
+  transform: translateY(-2px);
+}
+
+/* Pulsar opcional em botões específicos */
+.btn-animate {
+  animation: pulse-soft 2s infinite;
+}
+
+/* ------------------------------
+      MAPA EMBED
+--------------------------------*/
+.map-embed {
   width: 100%;
-  padding: 15px 0;
+  height: 340px;
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: fade-up 1.1s ease;
 }
 
-.rodape p, .rodape a {
-  color: #dceaff;
+/* ------------------------------
+      HERO SECTIONS
+--------------------------------*/
+.hero-xc,
+.hero-servicos,
+.hero-sobre,
+.hero-contato,
+.hero-faq,
+.hero-galeria {
+  animation: zoom-soft 0.7s ease;
 }
 
-.rodape a:hover {
-  color: white;
-  text-decoration: underline;
+/* ------------------------------
+        LOGIN & CADASTRO
+--------------------------------*/
+.background-login,
+.background-cadastro {
+  background: linear-gradient(135deg, var(--azul-claro), #ffffff);
+  min-height: 100vh;
 }
 
-/* ================================
-   BOTÃO WHATSAPP (garantia de estilo)
-================================ */
-.whatsapp-float {
-  position: fixed;
-  width: 60px;
-  height: 60px;
-  bottom: 25px;
-  right: 25px;
-  background-color: #25d366;
-  color: #fff;
+.login-box,
+.cadastro-box {
+  width: 420px;
+  background: #ffffff;
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  animation: fade-up 1s ease;
+}
+
+/* Ícones circulares */
+.login-icon,
+.cadastro-icon {
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  text-align: center;
-  font-size: 30px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.3);
-  z-index: 1000;
+  background: rgba(0, 72, 150, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease-in-out;
+  font-size: 2rem;
+  color: var(--azul-escuro);
 }
 
-.whatsapp-float:hover {
-  background-color: #1ebc57;
-  transform: scale(1.1);
+/* ------------------------------
+       CONTATO E FAQ
+--------------------------------*/
+.accordion-button {
+  background: #f8fbff;
+  color: #003b7a;
+  font-weight: 600;
+  border-radius: 12px !important;
 }
 
-/* ================================
-   UTILITÁRIOS E AJUSTES
-================================ */
-.texto-centro { text-align: center; }
-.branco { color: white; }
-.flax { display: flex; }
+.accordion-body {
+  border-left: 4px solid var(--azul-escuro);
+  background: #ffffff;
+  border-radius: 0 0 14px 14px;
+  animation: fade-up 0.8s ease;
+}
+
+/* ------------------------------
+       GALERIA
+--------------------------------*/
+.galeria-card img {
+  height: 230px;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ------------------------------
+        RESPONSIVIDADE
+--------------------------------*/
+@media (max-width: 768px) {
+  .img-carousel {
+    height: 200px;
+  }
+  .login-box,
+  .cadastro-box {
+    width: 100%;
+    margin: 0 12px;
+  }
+}
+/* === Corrige o problema da navbar cobrindo o conteúdo === */
+body {
+  padding-top: 90px;      /* ajuste conforme a altura da sua navbar */
+}
+
+/* Navbar moderna */
+.azul-nav {
+  background: rgba(0, 72, 150, 0.96) !important;
+  backdrop-filter: blur(6px);
+}
+
+/* Links */
+.navbar-nav .nav-link {
+  color: #e9f1ff !important;
+  margin-left: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff !important;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.dropdown-item:hover {
+  background: #e9f1ff;
+  color: #003b7a;
+}
+/* Equipamentos */
+.equip-card img {
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Galeria */
+.galeria-card img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
