@@ -8,17 +8,17 @@ $senha = 123;
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login - XC Limpeza</title>
-  <link rel="stylesheet" href="../css/estilo.css"/>
+  <link rel="stylesheet" href="css/estilo.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
 </head>
 <body class="background-login">
-  <?php include("../modelo/topo.html"); ?>
+  <?php include("modelo/topo.html"); ?>
 
   <main class="container vh-100 d-flex justify-content-center align-items-center">
     <div class="login-card">
       <div class="text-center mb-3">
-        <img src="../img/logo.jpeg" width="70" class="rounded-circle mb-2 border border-primary" alt="Logo XC Limpeza">
+        <img src="img/logo.jpeg" width="70" class="rounded-circle mb-2 border border-primary" alt="Logo XC Limpeza">
         <h2 class="text-primary fw-bold">Bem-vindo(a)</h2>
         <p class="text-muted mb-4">Acesse sua conta</p>
       </div>
@@ -40,7 +40,7 @@ $senha = 123;
     </div>
   </main>
 
-  <?php include("../modelo/rodape.html"); ?>
+  <?php include("modelo/rodape.html"); ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
