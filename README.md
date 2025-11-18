@@ -1,50 +1,90 @@
-# 🧼 TechNova — Sistema de Agendamento e Gestão de Serviços
+# TechNova Solutions
 
-## 🚀 Sobre o Projeto
+<h2 align="center">Soluções inteligentes para um mundo conectado
 
-O **TechNova** é um sistema desenvolvido para otimizar o **gerenciamento de clientes, serviços e agendamentos** de empresas do ramo de **limpeza e manutenção de estofados**.  
-O objetivo é facilitar o controle de atendimentos, o registro de serviços realizados e o envio de lembretes automáticos aos clientes, garantindo **organização, praticidade e eficiência** no dia a dia do prestador de serviços.  
+<img width="45%" src="pages/img/logotech.png"> <img width="40%" src="pages/img/logo.png"></h2>
 
----
+------------------------------------------------------------------------
 
-## 🎯 Objetivos
+## 🏗️ Arquitetura do Projeto --- MVC + DAO
 
-- Centralizar o **cadastro de clientes e serviços** realizados.  
-- Permitir o **agendamento de atendimentos** com horários disponíveis.  
-- Enviar **lembretes automáticos anuais** de manutenção.  
-- Gerar **orçamentos** de forma rápida e digital.  
-- Disponibilizar o sistema em **versão web e mobile**.  
+Este projeto foi desenvolvido utilizando o padrão **MVC
+(Model--View--Controller)** junto ao padrão **DAO (Data Access Object)**
+para gerenciamento de dados.
 
----
+Essa arquitetura foi escolhida para garantir:
 
-## 🧠 Técnicas de Levantamento de Requisitos
+-   🔹 Organização e modularidade\
+-   🔹 Facilidade de manutenção\
+-   🔹 Baixa acoplamento entre camadas\
+-   🔹 Maior escalabilidade\
+-   🔹 Camada de acesso ao banco totalmente separada da regra de negócio
 
-Os requisitos do sistema foram levantados por meio de **entrevistas e acompanhamento prático** com o cliente, realizados pelo integrante **Kauã** em **21/09/2025**.  
-A entrevista possibilitou compreender as necessidades e expectativas do usuário, enquanto o acompanhamento prático permitiu observar as etapas reais do trabalho e identificar melhorias.  
+------------------------------------------------------------------------
 
----
+## 🧩 Como funciona a arquitetura
 
-## ⚙️ Tecnologias Utilizadas (planejadas)
+### **🟦 Model**
 
-- **Frontend:** HTML / CSS / JavaScript  
-- **Backend:** PHP  
-- **Banco de Dados:** MySQL  
-- **Controle de Versão:** Git e GitHub  
-- **Design:** Figma / Canva  
-- **Ferramentas de Documentação:** Word / Markdown / Excel  
+Representa as entidades do sistema.
 
----
+### **🟩 DAO**
 
-## 🧑‍💻 Equipe TechNova
+Classe responsável pelo CRUD no banco de dados.
 
-- 🧠 **Rafael Lima** – Product Owner (PO)  
-- ⚙️ **Caua** – Desenvolvedor Backend  
-- 🖥️ **Kauã** – Desenvolvedor Frontend  
-- 🗃️ **Matheus** – Banco de Dados  
+### **🟧 Controller**
 
----
+Recebe ações do usuário, chama o DAO e envia respostas à View.
 
-## 💡 Visão Geral
+### **🟥 View**
 
-O **TechNova** busca ser uma ferramenta moderna e acessível para microempreendedores que precisam organizar seus atendimentos e clientes de forma simples e eficiente.  
-Com um design responsivo e funcionalidades práticas, o sistema oferecerá uma **experiência intuitiva**, unindo tecnologia e praticidade para o dia a dia do prestador de serviços.
+Interface visual (HTML/CSS/Bootstrap).
+
+------------------------------------------------------------------------
+
+## 📁 Estrutura de Pastas
+
+    /src
+     ├── /controller
+     ├── /model
+     ├── /dao
+     ├── /view
+     ├── /config
+     └── /assets
+    /docs
+    README.md
+    LICENSE
+
+------------------------------------------------------------------------
+
+## 🚀 Tecnologias Utilizadas
+
+### Back-End
+
+-   PHP PDO
+-   MVC + DAO
+-   MySQL
+
+### Front-End
+
+-   HTML
+-   CSS
+-   Bootstrap
+-   JS
+
+------------------------------------------------------------------------
+
+## 👨‍💻 Equipe
+
+-   [Cauã Porciuncula](https://github.com/Khaleb457)
+-   [Rafael Lima](https://github.com/RafaelGoncalves-bit)
+-   [Kaua Xavier](https://github.com/KauaXavier1)
+-   [Matheus Eduardo](https://github.com/Matheus58898)
+
+
+------------------------------------------------------------------------
+
+## 📄 Licença
+
+© 2025 TechNova Solutions\
+Todos os direitos reservados.
