@@ -14,10 +14,10 @@ para gerenciamento de dados.
 
 Essa arquitetura foi escolhida para garantir:
 
--   🔹 Organização e modularidade\
--   🔹 Facilidade de manutenção\
--   🔹 Baixa acoplamento entre camadas\
--   🔹 Maior escalabilidade\
+-   🔹 Organização e modularidade
+-   🔹 Facilidade de manutenção
+-   🔹 Baixa acoplamento entre camadas
+-   🔹 Maior escalabilidade
 -   🔹 Camada de acesso ao banco totalmente separada da regra de negócio
 
 ------------------------------------------------------------------------
