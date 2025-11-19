@@ -1,6 +1,6 @@
 <?php
+require_once __DIR__ . '/../partials/header.php';
 require_once __DIR__ . '/../partials/navbar.php';
-
 ?>
 
 <form class="container mt-2" method="post" action="<?= BASE_URL ?>/controller/ServicoController.php?acao=cadastrar">
@@ -18,3 +18,8 @@ require_once __DIR__ . '/../partials/navbar.php';
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+<?php
+require_once __DIR__ . '/../partials/footer.php';
+
+?>
