@@ -56,7 +56,7 @@ class OrcamentoController {
     // =========================================================================
     private function listarOrcamentos() {
         $lista = $this->orcamentoDAO->listarTodos();
-        require_once __DIR__ . '/../views/orcamento/index.php';
+        require_once __DIR__ . '/../view/orcamento/index.php';
     }
 
     // =========================================================================
@@ -69,7 +69,7 @@ class OrcamentoController {
         $listaTamanhos = $this->tamanhoDAO->listarTodos();
 
         // Manda tudo para a View
-        require_once __DIR__ . '/../views/orcamento/new.php';
+        require_once __DIR__ . '/../view/orcamento/new.php';
     }
 
     // =========================================================================
@@ -163,7 +163,7 @@ class OrcamentoController {
             // Para exibir nomes na tela, geralmente ajustamos a View ou buscamos objetos auxiliares aqui.
             
             // Vamos assumir que a View vai receber o objeto $orcamento
-            require_once __DIR__ . '/../views/orcamento/view.php';
+            require_once __DIR__ . '/../view/orcamento/view.php';
         }
     }
 
