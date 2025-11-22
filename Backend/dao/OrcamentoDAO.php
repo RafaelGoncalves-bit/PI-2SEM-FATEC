@@ -119,6 +119,8 @@ class OrcamentoDAO {
             $item->setTamanhoId($row['tamanho_id']);
             $item->setQuantidade($row['quantidade']);
             $item->setValorCalculado($row['valor_calculado']);
+            $item->setNomeServico($row['nome_servico']); // O alias que usamos no SQL
+            $item->setNomeTamanho($row['dimensao']);
             
             // Adiciona na lista interna do Model
             $orcamento->addItem($item);

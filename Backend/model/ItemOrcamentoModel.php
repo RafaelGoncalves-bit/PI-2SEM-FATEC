@@ -8,6 +8,8 @@ class ItemOrcamentoModel {
     private int $tamanhoId;   // FK
     private int $quantidade;
     private float $valorCalculado; // Preço final deste item (Unitário * Qtd * Tamanho)
+    private ?string $nomeServico = null;
+    private ?string $nomeTamanho = null;
 
     // Getters e Setters
     public function getId(): ?int {
@@ -50,5 +52,20 @@ class ItemOrcamentoModel {
     }
     public function setValorCalculado(float $valorCalculado): void {
         $this->valorCalculado = $valorCalculado;
+    }
+        // --- NOME DO SERVICO ---
+    public function setNomeServico($nome) { 
+        $this->nomeServico = $nome; 
+    }
+    public function getNomeServico() {
+         return $this->nomeServico; 
+    }
+
+    // --- NOME DO TAMANHO ---
+    public function setNomeTamanho($nome) { 
+        $this->nomeTamanho = $nome; 
+    }
+    public function getNomeTamanho() { 
+        return $this->nomeTamanho; 
     }
 }
