@@ -63,7 +63,7 @@ require_once __DIR__ . '/../../config/db.php';
             Agendamento
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<?= BASE_URL ?>/controller/AgendamentoController.php?acao=listar">Index</a></li>
+            <li><a class="dropdown-item" href="<?= BASE_URL ?>/controller/AgendamentoController.php?acao=agenda">Index</a></li>
             <li><a class="dropdown-item" href="<?= BASE_URL ?>/controller/AgendamentoController.php?acao=novo">insert</a></li>
           </ul>
         </li>

@@ -27,9 +27,22 @@ class AgendamentoDAO {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
-    
-    public function listarTodos() {
-        // SQL para listar agendamentos com nomes de Funcionario e Cliente...
-        // Faremos depois para a tela de calendário
-    }
+    public function listarCronologico() {
+    // Traz Data, Hora, Cliente, Endereço, Funcionário e Serviço
+    // Note os múltiplos JOINS para pegar endereço do cliente e nome do funcionário
+    $sql = "SELECT a.*, 
+                   c.nome as cliente_nome, 
+                   c.endereco as cliente_endereco,
+                   f.nome as funcionario_nome,
+                   os.id as os_id
+            FROM agendamento a
+            JOIN ordem_servico os ON a.ordem_servico_id = os.id
+            JOIN orcamento o ON os.orcamento_id = o.id
+            JOIN cliente c ON o.cliente_id = c.id
+            JOIN funcionario f ON a.funcionario_id = f.id
+            ORDER BY a.data_agendamento ASC"; // Do mais antigo para o futuro
+            
+    $stmt = $this->pdo->query($sql);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 }

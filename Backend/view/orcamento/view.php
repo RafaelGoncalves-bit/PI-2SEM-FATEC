@@ -47,11 +47,15 @@
             </table>
         </div>
         <div class="card-footer text-end">
-            <a href="<?= BASE_URL ?>/controller/AgendamentoController.php?acao=gerar_os&id_orcamento=<?= $orcamento->getId() ?>" 
-            class="btn btn-success"
-            onclick="return confirm('Tem certeza? Isso vai gerar uma Ordem de Serviço e não poderá ser desfeito.');">
-                ✅ Aprovar e Gerar OS
-            </a>
+            <?php if ($orcamento->getStatus() == 'Pendente'): ?>
+                <a href="<?= BASE_URL ?>/controller/AgendamentoController.php?acao=gerar_os&id_orcamento=<?= $orcamento->getId() ?>" 
+                class="btn btn-success"
+                onclick="return confirm('Tem certeza? Isso vai gerar uma Ordem de Serviço e não poderá ser desfeito.');">
+                    ✅ Aprovar e Gerar OS
+                </a>
+            <?php else: ?>
+                <span class="badge bg-success p-2">Este orçamento já foi aprovado e gerou uma OS.</span>
+            <?php endif; ?>
         </div>
     </div>
 </div>

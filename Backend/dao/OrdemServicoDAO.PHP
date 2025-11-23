@@ -12,8 +12,6 @@ class OrdemServicoDAO {
 
     // Cria a OS baseada no orçamento aprovado
     public function criarAPartirDoOrcamento($orcamentoId) {
-        // AQUI ESTÁ A MÁGICA DA OPÇÃO 1:
-        // Usamos a função NOW() do banco para gravar o momento exato da criação
         $sql = "INSERT INTO ordem_servico (orcamento_id, data_geracao, status_servico) 
                 VALUES (?, NOW(), 'Aguardando')";
         
@@ -39,4 +37,16 @@ class OrdemServicoDAO {
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function listarTodas() {
+    // Traz OS + Nome Cliente + Status + Valor (do Orçamento)
+    $sql = "SELECT os.*, c.nome as cliente_nome, o.valor_total 
+            FROM ordem_servico os
+            JOIN orcamento o ON os.orcamento_id = o.id
+            JOIN cliente c ON o.cliente_id = c.id
+            ORDER BY os.id DESC"; // As mais novas primeiro
+            
+    $stmt = $this->pdo->query($sql);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 }

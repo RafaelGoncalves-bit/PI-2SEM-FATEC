@@ -5,11 +5,15 @@ require_once __DIR__ . '/../dao/OrdemServicoDAO.php';
 require_once __DIR__ . '/../dao/FuncionarioDAO.php';
 // IMPORTANTE: Adicionei a importação do Model aqui
 require_once __DIR__ . '/../model/AgendamentoModel.php'; 
+require_once __DIR__ . '/../dao/OrcamentoDAO.php';
 
 class AgendamentoController {
     private $agendamentoDAO;
     private $funcionarioDAO;
     private $ordemServicoDAO;
+    private $orcamentoDAO;
+
+    
 
     // === SUAS REGRAS DE FLEXIBILIDADE ===
     const HORA_INICIO = 7; 
@@ -23,6 +27,8 @@ class AgendamentoController {
         $this->agendamentoDAO = new AgendamentoDAO($conn);
         $this->ordemServicoDAO = new OrdemServicoDAO($conn);
         $this->funcionarioDAO = new FuncionarioDAO($conn);
+        $this->orcamentoDAO = new OrcamentoDAO($conn);
+
     }
 
     public function processarRequisicao() {
@@ -38,6 +44,12 @@ class AgendamentoController {
             case 'gerar_os':
                 $this->gerarOSApartirDoOrcamento();
                 break;
+            case 'listar_os':
+                $this->listarTodasOS();
+                break;
+            case 'agenda':
+                $this->verAgenda();
+                break;
         }
     }
 
@@ -46,7 +58,9 @@ class AgendamentoController {
         $orcamentoId = $_GET['id_orcamento'];
         
         // CORREÇÃO: Mudado de $this->servi para $this->ordemServicoDAO
-        $this->ordemServicoDAO->criarAPartirDoOrcamento($orcamentoId); // Ajustei o nome do método para bater com o DAO anterior
+        $this->ordemServicoDAO->criarAPartirDoOrcamento($orcamentoId); 
+
+        $this->orcamentoDAO->atualizarStatus($orcamentoId, 'Aprovado');
         
         header('Location: AgendamentoController.php?acao=novo');
     }
@@ -56,6 +70,7 @@ class AgendamentoController {
         $listaOSPendentes = $this->ordemServicoDAO->listarPendentes(); // CORREÇÃO: Busca no DAO correto
         require_once __DIR__ . '/../view/agendamento/new.php';
     }
+
 
     // 2. O ALGORITMO DE VALIDAÇÃO E SALVAMENTO
     private function salvarAgendamento() {
@@ -112,6 +127,16 @@ class AgendamentoController {
         } catch (Exception $e) {
             echo "Erro: " . $e->getMessage();
         }
+    }
+
+    private function listarTodasOS() {
+        $listaOS = $this->ordemServicoDAO->listarTodas();
+        require_once __DIR__ . '/../view/agendamento/lista_os.php';
+    }
+
+    private function verAgenda() {
+        $listaAgenda = $this->agendamentoDAO->listarCronologico();
+        require_once __DIR__ . '/../view/agendamento/agenda.php';
     }
 }
 
