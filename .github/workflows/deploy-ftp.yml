@@ -21,7 +21,7 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           protocol: ftp
-          local-dir: ./pages
+          local-dir: ./pages/
           server-dir: /public_html
           exclude: |
             **/.git*
@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           protocol: ftp
-          local-dir: ./backend
+          local-dir: ./backend/
           server-dir: /public_html/backend
           exclude: |
             **/.git*
