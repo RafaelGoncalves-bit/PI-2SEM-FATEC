@@ -1,42 +1,42 @@
-# name: Deploy FTP Hostinger
+name: Deploy FTP Hostinger
 
-# on:
-#   push:
-#     branches:
-#       - main
+on:
+  push:
+    branches:
+      - main
 
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-#       # FRONTEND (HTML/CSS/JS)
-#       - name: Deploy Front pages to public_html
-#         uses: SamKirkland/FTP-Deploy-Action@v4
-#         with:
-#           server: ${{ secrets.FTP_HOST }}
-#           username: ${{ secrets.FTP_USER }}
-#           password: ${{ secrets.FTP_PASS }}
-#           protocol: ftp
-#           local-dir: ./pages
-#           server-dir: /public_html
-#           exclude: |
-#             **/.git*
-#             **/node_modules/**
+      # FRONTEND (HTML/CSS/JS)
+      - name: Deploy Front pages to public_html
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          protocol: ftp
+          local-dir: ./pages
+          server-dir: /public_html
+          exclude: |
+            **/.git*
+            **/node_modules/**
 
-#       # BACKEND (PHP)
-#       - name: Deploy Backend to public_html/backend
-#         uses: SamKirkland/FTP-Deploy-Action@v4
-#         with:
-#           server: ${{ secrets.FTP_HOST }}
-#           username: ${{ secrets.FTP_USER }}
-#           password: ${{ secrets.FTP_PASS }}
-#           protocol: ftp
-#           local-dir: ./backend
-#           server-dir: /public_html/backend
-#           exclude: |
-#             **/.git*
-#             **/node_modules/**
+      # BACKEND (PHP)
+      - name: Deploy Backend to public_html/backend
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          protocol: ftp
+          local-dir: ./backend
+          server-dir: /public_html/backend
+          exclude: |
+            **/.git*
+            **/node_modules/**
