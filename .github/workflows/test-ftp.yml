@@ -1,0 +1,10 @@
+name: Test FTP Action
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test FTP Deploy Action
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
