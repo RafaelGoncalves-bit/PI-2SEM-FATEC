@@ -1,20 +1,4 @@
-name: Deploy FTP Hostinger
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      # -------- FRONTEND (HTML/CSS/JS) --------
-      - name: Deploy Front (pages/) → public_html
+      - name: Deploy Front (pages)
         uses: SamKirkland/FTP-Deploy-Action@v4
         with:
           server: ${{ secrets.FTP_HOST }}
@@ -23,12 +7,8 @@ jobs:
           protocol: ftp
           local-dir: ./pages
           server-dir: /public_html
-          exclude: |
-            **/.git*
-            **/node_modules/**
 
-      # -------- BACKEND (PHP) --------
-      - name: Deploy Backend (backend/) → public_html/backend
+      - name: Deploy Backend (backend)
         uses: SamKirkland/FTP-Deploy-Action@v4
         with:
           server: ${{ secrets.FTP_HOST }}
@@ -37,6 +17,3 @@ jobs:
           protocol: ftp
           local-dir: ./backend
           server-dir: /public_html/backend
-          exclude: |
-            **/.git*
-            **/node_modules/**
