@@ -39,6 +39,4 @@ jobs:
           server-dir: /public_html/backend/
           exclude: |
             **/.git*
-            **/node_modules/**
-
-            
+            **/node_modules/**            
