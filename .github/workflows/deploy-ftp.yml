@@ -1,19 +1,10 @@
-      - name: Deploy Front (pages)
-        uses: SamKirkland/FTP-Deploy-Action@v4
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
-          protocol: ftp
-          local-dir: ./pages
-          server-dir: /public_html
+name: Test Action
 
-      - name: Deploy Backend (backend)
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test Action
         uses: SamKirkland/FTP-Deploy-Action@v4
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
-          protocol: ftp
-          local-dir: ./backend
-          server-dir: /public_html/backend
