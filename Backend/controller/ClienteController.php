@@ -62,7 +62,7 @@ class ClienteController {
         $endereco = $_POST['endereco'] ?? null;
         $telefone = $_POST['telefone'] ?? null;
         $email = $_POST['email'] ?? null;
-        $tipo = $_POST['tipo'] ?? 'Fisica'; // 'Fisica' ou 'Juridica'
+        $tipo = $_POST['tipo'] ?? 'Fisico'; // 'Fisica' ou 'Juridica'
         $documento = $_POST['documento'] ?? null;
 
         // 2. Validação básica

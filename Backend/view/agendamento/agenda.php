@@ -70,6 +70,11 @@
                                 👷 <?= $item['funcionario_nome'] ?>
                             </span>
                         </div>
+                        <a href="AgendamentoController.php?acao=cancelar&id=<?= $item['id'] ?>" 
+                            class="btn btn-outline-danger btn-sm"
+                            onclick="return confirm('ATENÇÃO: Isso cancelará o agendamento E a Ordem de Serviço. Continuar?');">
+                            🚫 Cancelar Visita
+                        </a>
                     </div>
                 </div>
             </div>

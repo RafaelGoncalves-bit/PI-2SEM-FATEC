@@ -39,7 +39,7 @@ require_once __DIR__ . '/../../controller/FuncionarioController.php';
             else: 
             ?>
                 <tr>
-                    <td colspan="5">Nenhum serviço cadastrado.</td>
+                    <td colspan="5">Nenhum funcionario cadastrado.</td>
                 </tr>
             <?php endif; ?>
         </tbody>

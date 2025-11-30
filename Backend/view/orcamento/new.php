@@ -27,7 +27,8 @@
                 <div class="col-md-6">
                     <label>Data:</label>
                     <input type="date" name="data_emissao" class="form-control" 
-                           value="<?= date('Y-m-d') ?>" required>
+                           value="<?= date('Y-m-d') ?>" required readonly>
+                           
                 </div>
             </div>
         </div>

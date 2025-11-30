@@ -31,7 +31,7 @@
                         
                         <td><?= $orcamento['nome_cliente'] ?></td>
                         
-                        <td><?= date('d/m/Y', strtotime($orcamento['data_emissao'])) ?></td>
+                        <td><?= date('d/m/Y', strtotime($orcamento['data_emissao']))?></td>
                         
                         <td>
                             <span class="badge bg-<?= $orcamento['status'] == 'Pendente' ? 'warning' : 'success' ?>">
@@ -46,12 +46,14 @@
                                class="btn btn-info btn-sm text-white">
                                 👁️ Ver Itens
                             </a>
-
-                            <a href="<?= BASE_URL ?>/controller/OrcamentoController.php?acao=excluir&id=<?= $orcamento['id'] ?>" 
-                               class="btn btn-danger btn-sm"
-                               onclick="return confirm('Tem certeza? Isso apagará todos os itens deste orçamento!');">
-                                🗑️
-                            </a>
+                                <?php if ($orcamento['status'] !== 'Cancelado'): ?>
+                                    <a href="../../Backend/controller/OrcamentoController.php?acao=cancelar&id=<?= $orcamento['id'] ?>" 
+                                    class="btn btn-warning btn-sm"
+                                    onclick="return confirm('Tem certeza? O orçamento será marcado como CANCELADO e não poderá ser recuperado.');">
+                                        🚫 </a>
+                                <?php else: ?>
+                                    <span class="badge bg-secondary">Cancelado</span>
+                                <?php endif; ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

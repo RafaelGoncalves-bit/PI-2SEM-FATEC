@@ -27,8 +27,8 @@ require_once __DIR__ . '/../partials/navbar.php';
 
   <select class="form-select" aria-label="Default select example" name="tipo" required>
     <option selected>Tipo Cliente</option>
-    <option value="Fisica">Pessoa Fisica (CPF)</option>
-    <option value="Juridica">Pessoa Jurícida (CNPJ)</option>
+    <option value="Fisico">Pessoa Fisica (CPF)</option>
+    <option value="Juridico">Pessoa Jurícida (CNPJ)</option>
   </select>   
 
   <div class="mb-3">

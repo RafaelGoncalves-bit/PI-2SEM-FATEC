@@ -38,8 +38,8 @@ class OrcamentoController {
             case 'salvar':
                 $this->salvarNovoOrcamento();
                 break;
-            case 'excluir':
-                $this->excluirOrcamento();
+            case 'cancelar':
+                $this->cancelarOrcamento();
                 break;
             case 'detalhes':
                 $this->mostrarDetalhes();
@@ -167,11 +167,21 @@ class OrcamentoController {
         }
     }
 
-    private function excluirOrcamento() {
+    private function cancelarOrcamento() {
         $id = $_GET['id'] ?? null;
+        
         if ($id) {
-            $this->orcamentoDAO->excluir($id);
+            try {
+                // Tenta chamar a procedure
+                $this->orcamentoDAO->cancelar($id);
+            } catch (Exception $e) {
+                // Dica: Em um sistema real, você passaria esse erro para a View via Sessão.
+                // Aqui, para ser rápido, podemos dar um die() ou ignorar.
+                // die($e->getMessage()); 
+            }
         }
+        
+        // Redireciona para a lista
         header('Location: OrcamentoController.php?acao=listar');
         exit;
     }

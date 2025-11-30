@@ -141,13 +141,22 @@ class OrcamentoDAO {
     }
 
     // ==================================================================
-    // D - EXCLUIR (Cascade cuida dos itens)
+    // D - CANCELAR (Usando Procedure)
     // ==================================================================
-    public function excluir($id) {
-        // Graças ao 'ON DELETE CASCADE' no banco, apagar o pai apaga os filhos
-        $sql = "DELETE FROM orcamento WHERE id = ?";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(1, $id);
-        return $stmt->execute();
+    public function cancelar($id) {
+        try {
+            // Chama a procedure que criamos no banco
+            // Ela já verifica se está 'Aprovado' e bloqueia se necessário
+            $sql = "CALL sp_cancelar_orcamento(?)";
+            
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(1, $id);
+            
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            // Se a procedure der erro (ex: tentar cancelar orçamento Aprovado),
+            // capturamos o erro aqui para mostrar ao usuário.
+            throw new Exception("Erro ao cancelar: " . $e->getMessage());
+        }
     }
 }

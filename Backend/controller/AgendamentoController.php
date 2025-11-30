@@ -50,6 +50,9 @@ class AgendamentoController {
             case 'agenda':
                 $this->verAgenda();
                 break;
+            case 'cancelar':
+                $this->cancelarAgendamento();
+                break;
         }
     }
 
@@ -120,6 +123,8 @@ class AgendamentoController {
 
             // 2. Passamos o OBJETO para o DAO (agora casa com o DAO)
             $this->agendamentoDAO->agendar($agendamento);
+
+            $this->ordemServicoDAO->atualizarStatus($osId, 'Agendado');
             
             echo "Sucesso! Agendado.";
             // header('Location: ...');
@@ -137,6 +142,23 @@ class AgendamentoController {
     private function verAgenda() {
         $listaAgenda = $this->agendamentoDAO->listarCronologico();
         require_once __DIR__ . '/../view/agendamento/agenda.php';
+    }
+
+    private function cancelarAgendamento() {
+        // Pega o ID do AGENDAMENTO (não da OS)
+        $id = $_GET['id'] ?? null;
+        
+        if ($id) {
+            try {
+                $this->agendamentoDAO->cancelar($id);
+            } catch (Exception $e) {
+                // Opcional: tratar erro
+            }
+        }
+        
+        // Volta para a Agenda
+        header('Location: AgendamentoController.php?acao=agenda');
+        exit;
     }
 }
 

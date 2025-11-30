@@ -39,14 +39,24 @@ class OrdemServicoDAO {
     }
 
     public function listarTodas() {
-    // Traz OS + Nome Cliente + Status + Valor (do Orçamento)
-    $sql = "SELECT os.*, c.nome as cliente_nome, o.valor_total 
-            FROM ordem_servico os
-            JOIN orcamento o ON os.orcamento_id = o.id
-            JOIN cliente c ON o.cliente_id = c.id
-            ORDER BY os.id DESC"; // As mais novas primeiro
-            
-    $stmt = $this->pdo->query($sql);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+        // Traz OS + Nome Cliente + Status + Valor (do Orçamento)
+        $sql = "SELECT os.*, c.nome as cliente_nome, o.valor_total 
+                FROM ordem_servico os
+                JOIN orcamento o ON os.orcamento_id = o.id
+                JOIN cliente c ON o.cliente_id = c.id
+                ORDER BY os.id DESC"; // As mais novas primeiro
+                
+        $stmt = $this->pdo->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function atualizarStatus($id, $novoStatus) {
+        $sql = "UPDATE ordem_servico SET status_servico = ? WHERE id = ?";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(1, $novoStatus);
+        $stmt->bindValue(2, $id);
+        
+        return $stmt->execute();
+    }
 }
