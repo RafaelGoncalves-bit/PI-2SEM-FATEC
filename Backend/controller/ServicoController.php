@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../config/db.php';
+
 session_start(); // Inicia a sessão para ler os dados
 
 // TRAVA DE SEGURANÇA
@@ -10,7 +12,6 @@ if (!isset($_SESSION['usuario_id'])) {
 }
 // 1. Importações (Caminhos relativos baseados na sua estrutura)
 // O __DIR__ pega o diretório atual (controller) e sobe um nível (..)
-require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../dao/ServicoDAO.php';
 require_once __DIR__ . '/../model/ServicoModel.php';
 
