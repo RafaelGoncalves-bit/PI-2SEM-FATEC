@@ -4,12 +4,12 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sobre - XC Limpeza</title>
-  <link rel="stylesheet" href="../css/estilo.css"/>
+  <link rel="stylesheet" href="css/estilo.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
 </head>
 <body>
-  <?php include("../modelo/topo.html"); ?>
+  <?php include("modelo/topo.html"); ?>
 
   <main class="container my-5">
     <section class="text-center">
@@ -19,7 +19,7 @@
 
     <div class="row align-items-center gy-4">
       <div class="col-md-6">
-        <img src="../img/usados2 (4).jpeg" class="img-fluid rounded shadow-sm" alt="Equipe XC Limpeza"/>
+        <img src="img/usados2 (4).jpeg" class="img-fluid rounded shadow-sm" alt="Equipe XC Limpeza"/>
       </div>
       <div class="col-md-6">
         <!-- Mantenha seu texto original aqui -->
@@ -57,7 +57,7 @@
     </section>
   </main>
 
-  <?php include("../modelo/rodape.html"); ?>
+  <?php include("modelo/rodape.html"); ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
