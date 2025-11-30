@@ -10,8 +10,9 @@ class FuncionarioModel {
     private string $nome;
     private string $email; // Pode ser nulo se não tiver descrição
     private ?string $cpf = null;
-    
     private float $telefone;
+    private ?string $senha = null; 
+    private string $status;
 
 
     // 2. Getters e Setters (A forma de acessar e modificar os dados)
@@ -60,5 +61,20 @@ class FuncionarioModel {
 
     public function setTelefone(float $telefone): void {
         $this->telefone = $telefone;
+    }
+
+     // --- SENHA ---
+    public function setSenha($senha) {
+        $this->senha = $senha;
+    }
+    public function getSenha() {
+        return $this->senha;
+    }
+    // --- STATUS ---
+    public function setStatus($status) {
+        $this->status = $status;
+    }
+    public function getStatus() {
+        return $this->status;
     }
 }

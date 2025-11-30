@@ -1,6 +1,13 @@
 <?php
-// Backend/controller/ServicoController.php
+session_start(); // Inicia a sessão para ler os dados
 
+// TRAVA DE SEGURANÇA
+// Se não tiver a variável 'usuario_id' na sessão, é porque não logou.
+if (!isset($_SESSION['usuario_id'])) {
+    // Redireciona para o login
+    header('Location: ../view/funcionario/login.php');
+    exit; // Mata o script aqui
+}
 // 1. Importações (Caminhos relativos baseados na sua estrutura)
 // O __DIR__ pega o diretório atual (controller) e sobe um nível (..)
 require_once __DIR__ . '/../config/db.php';

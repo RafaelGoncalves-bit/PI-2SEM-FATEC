@@ -1,16 +1,27 @@
-<?php include("../modelo/topo.html"); ?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre - XC Limpeza</title>
+  <link rel="stylesheet" href="css/estilo.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
+</head>
+<body>
+  <?php include("modelo/topo.html"); ?>
 
 <main class="container my-5">
 
-  <section class="text-center mb-5">
-    <h2 class="titulo-secao">Quem Somos</h2>
-    <p class="subtitulo-secao">Cuidamos do seu conforto com qualidade e dedicação.</p>
-  </section>
-
-  <div class="row align-items-center gy-4">
-
-    <div class="col-md-6">
-      <img src="../img/usados2 (4).jpeg" class="img-fluid rounded shadow-sm" alt="Equipe XC Limpeza">
+    <div class="row align-items-center gy-4">
+      <div class="col-md-6">
+        <img src="img/usados2 (4).jpeg" class="img-fluid rounded shadow-sm" alt="Equipe XC Limpeza"/>
+      </div>
+      <div class="col-md-6">
+        <!-- Mantenha seu texto original aqui -->
+        <p>Seu texto original de apresentação...</p>
+        <p>Mais detalhes sobre o fundador, atuação em Araras e região, etc.</p>
+      </div>
     </div>
 
     <div class="col-md-6">
@@ -55,7 +66,7 @@
 
 </main>
 
-<?php include("../modelo/rodape.html"); ?>
+<?php include("modelo/rodape.html"); ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
