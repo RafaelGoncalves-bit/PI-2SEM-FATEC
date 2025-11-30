@@ -1,0 +1,1 @@
+<img src="../pages/img/classe.png">

@@ -1,0 +1,28 @@
+name: Deploy FTP Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # BACKEND (PHP)
+      - name: Deploy Backend to public_html/backend
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          protocol: ftp
+          local-dir: ./Backend/
+          server-dir: /
+          exclude: |
+            **/.git*
+            **/node_modules/**            
