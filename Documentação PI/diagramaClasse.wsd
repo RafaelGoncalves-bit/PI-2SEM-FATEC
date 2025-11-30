@@ -1,0 +1,190 @@
+@startuml
+
+' ===========================================
+'              MODELOS PRINCIPAIS
+' ===========================================
+
+class AgendamentoModel {
+    - id : int?
+    - ordemServicoId : int
+    - funcionarioId : int
+    - dataAgendamento : string
+
+    + getId() : int?
+    + setId(id : int) : void
+    + getOrdemServicoId() : int
+    + setOrdemServicoId(ordemServicoId : int) : void
+    + getFuncionarioId() : int
+    + setFuncionarioId(funcionarioId : int) : void
+    + getDataAgendamento() : string
+    + setDataAgendamento(dataAgendamento : string) : void
+}
+
+class ClienteModel {
+    - id : int?
+    - nome : string
+    - endereco : string
+    - telefone : string
+    - email : string
+    - tipo : string
+    - documento : string
+    - senha : string?
+
+    + getId() : int?
+    + setId(id : int) : void
+    + getNome() : string
+    + setNome(nome : string) : void
+    + getEndereco() : string
+    + setEndereco(endereco : string) : void
+    + getTelefone() : string
+    + setTelefone(telefone : string) : void
+    + getEmail() : string
+    + setEmail(email : string) : void
+    + getTipo() : string
+    + setTipo(tipo : string) : void
+    + getDocumento() : string
+    + setDocumento(documento : string) : void
+    + getSenha() : string?
+    + setSenha(senha : string?) : void
+}
+
+class FuncionarioModel {
+    - id : int?
+    - nome : string
+    - email : string?
+    - cpf : string?
+    - telefone : float
+    - senha : string?
+    - status : string
+
+    + getId() : int?
+    + setId(id : int) : void
+    + getNome() : string
+    + setNome(nome : string) : void
+    + getEmail() : string?
+    + setEmail(email : string?) : void
+    + getCpf() : string?
+    + setCpf(cpf : string?) : void
+    + getTelefone() : float
+    + setTelefone(telefone : float) : void
+    + getSenha() : string?
+    + setSenha(senha : string?) : void
+    + getStatus() : string
+    + setStatus(status : string) : void
+}
+
+class ItemOrcamentoModel {
+    - id : int?
+    - orcamentoId : int
+    - servicoId : int
+    - tamanhoId : int
+    - quantidade : int
+    - valorCalculado : float
+    - nomeServico : string?
+    - nomeTamanho : string?
+
+    + getId() : int?
+    + setId(id : int) : void
+    + getOrcamentoId() : int
+    + setOrcamentoId(orcamentoId : int) : void
+    + getServicoId() : int
+    + setServicoId(servicoId : int) : void
+    + getTamanhoId() : int
+    + setTamanhoId(tamanhoId : int) : void
+    + getQuantidade() : int
+    + setQuantidade(quantidade : int) : void
+    + getValorCalculado() : float
+    + setValorCalculado(valorCalculado : float) : void
+    + setNomeServico(nome : string) : void
+    + getNomeServico() : string?
+    + setNomeTamanho(nome : string) : void
+    + getNomeTamanho() : string?
+}
+
+class OrcamentoModel {
+    - id : int?
+    - clienteId : int
+    - dataEmissao : string
+    - valorTotal : float
+    - status : string
+    - itens : ItemOrcamentoModel[]
+
+    + getId() : int?
+    + setId(id : int) : void
+    + getClienteId() : int
+    + setClienteId(clienteId : int) : void
+    + getDataEmissao() : string
+    + setDataEmissao(dataEmissao : string) : void
+    + getValorTotal() : float
+    + setValorTotal(valorTotal : float) : void
+    + getStatus() : string
+    + setStatus(status : string) : void
+    + addItem(item : ItemOrcamentoModel) : void
+    + getItens() : ItemOrcamentoModel[]
+}
+
+class OrdemServicoModel {
+    - id : int?
+    - orcamentoId : int
+    - dataGeracao : string
+    - statusServico : string
+    - dataConclusao : string?
+
+    + getId() : int?
+    + setId(id : int) : void
+    + getOrcamentoId() : int
+    + setOrcamentoId(orcamentoId : int) : void
+    + getDataGeracao() : string
+    + setDataGeracao(dataGeracao : string) : void
+    + getStatusServico() : string
+    + setStatusServico(statusServico : string) : void
+    + getDataConclusao() : string?
+    + setDataConclusao(dataConclusao : string?) : void
+}
+
+class ServicoModel {
+    - id : int?
+    - nome : string
+    - descricao : string?
+    - precoBase : float
+
+    + getId() : int?
+    + setId(id : int) : void
+    + getNome() : string
+    + setNome(nome : string) : void
+    + getDescricao() : string?
+    + setDescricao(descricao : string?) : void
+    + getPrecoBase() : float
+    + setPrecoBase(precoBase : float) : void
+}
+
+class TamanhoModel {
+    - id : int?
+    - dimensao : string
+    - multiplicadorPreco : float
+
+    + getId() : int?
+    + setId(id : int) : void
+    + getDimensao() : string
+    + setDimensao(dimensao : string) : void
+    + getMultiplicadorPreco() : float
+    + setMultiplicadorPreco(multiplicadorPreco : float) : void
+}
+
+' ===========================================
+'              RELACIONAMENTOS
+' ===========================================
+
+ClienteModel "1" --> "0..*" OrcamentoModel : clienteId
+OrcamentoModel "1" --> "0..1" OrdemServicoModel : orcamentoId
+OrcamentoModel "1" *-- "0..*" ItemOrcamentoModel : itens
+
+ItemOrcamentoModel "0..*" --> "1" ServicoModel : servicoId
+ItemOrcamentoModel "0..*" --> "1" TamanhoModel : tamanhoId
+
+AgendamentoModel "0..*" --> "1" OrdemServicoModel : ordemServicoId
+AgendamentoModel "0..*" --> "1" FuncionarioModel : funcionarioId
+
+FuncionarioModel "1" --> "0..*" AgendamentoModel
+
+@enduml
