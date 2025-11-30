@@ -1,4 +1,14 @@
 <?php
+session_start(); // Inicia a sessão para ler os dados
+
+// TRAVA DE SEGURANÇA
+// Se não tiver a variável 'usuario_id' na sessão, é porque não logou.
+if (!isset($_SESSION['usuario_id'])) {
+    // Redireciona para o login
+    header('Location: ../view/funcionario/login.php');
+    exit; // Mata o script aqui
+}
+
 require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../dao/AgendamentoDAO.php';
 require_once __DIR__ . '/../dao/OrdemServicoDAO.php';
@@ -52,6 +62,9 @@ class AgendamentoController {
                 break;
             case 'cancelar':
                 $this->cancelarAgendamento();
+                break;
+            case 'concluir_os':
+                $this->concluirOS();
                 break;
         }
     }
@@ -158,6 +171,16 @@ class AgendamentoController {
         
         // Volta para a Agenda
         header('Location: AgendamentoController.php?acao=agenda');
+        exit;
+    }
+
+    private function concluirOS() {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            $this->ordemServicoDAO->concluir($id);
+        }
+        // Volta para a lista de OS
+        header('Location: AgendamentoController.php?acao=listar_os');
         exit;
     }
 }

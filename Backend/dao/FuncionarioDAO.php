@@ -91,4 +91,35 @@ class FuncionarioDAO {
         
         return $stmt->execute();
     }
+
+    // Busca um funcionário pelo email (Método essencial para o Login)
+    public function buscarPorEmail($email) {
+        // Tabela no singular conforme definimos
+        $sql = "SELECT * FROM funcionario WHERE email = ?";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(1, $email);
+        $stmt->execute();
+        
+        $dado = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($dado) {
+            // Hidrata o objeto FuncionarioModel
+            $func = new FuncionarioModel();
+            $func->setId($dado['id']);
+            $func->setNome($dado['nome']);
+            $func->setEmail($dado['email']);
+            $func->setTelefone($dado['telefone']);
+            
+            // IMPORTANTE: Precisamos carregar a senha (hash) e o status
+            // para o Controller poder validar o acesso
+            $func->setSenha($dado['senha']); 
+            $func->setStatus($dado['status']);
+            
+            return $func;
+        }
+        
+        // Se não achar ninguém com esse email, retorna nulo
+        return null;
+    }
 }
