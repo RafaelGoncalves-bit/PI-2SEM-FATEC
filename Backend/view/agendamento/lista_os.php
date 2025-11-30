@@ -40,11 +40,24 @@
                                 </td>
                                 <td>R$ <?= number_format($os['valor_total'], 2, ',', '.') ?></td>
                                 <td class="text-center">
+                                    
                                     <?php if($os['status_servico'] == 'Aguardando'): ?>
                                         <a href="AgendamentoController.php?acao=novo&os_selecionada=<?= $os['id'] ?>" 
                                            class="btn btn-sm btn-success">📅 Agendar</a>
                                     <?php else: ?>
                                         <button class="btn btn-sm btn-secondary" disabled>Já Agendado</button>
+                                    <?php endif; ?>
+
+                                    <?php if(in_array($os['status_servico'], ['Agendado', 'Em Andamento'])): ?>
+                                        <a href="AgendamentoController.php?acao=concluir_os&id=<?= $os['id'] ?>" 
+                                        class="btn btn-sm btn-success"
+                                        onclick="return confirm('Confirmar a conclusão deste serviço?');">
+                                            ✅ Concluir
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <?php if($os['status_servico'] == 'Concluido'): ?>
+                                        <span class="badge bg-success">Finalizado em <?= date('d/m', strtotime($os['data_conclusao'])) ?></span>
                                     <?php endif; ?>
 
                                     <a href="../../Backend/controller/OrcamentoController.php?acao=detalhes&id=<?= $os['orcamento_id'] ?>" 

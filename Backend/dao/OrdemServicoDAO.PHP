@@ -59,4 +59,15 @@ class OrdemServicoDAO {
         
         return $stmt->execute();
     }
+
+    public function concluir($id) {
+        try {
+            $sql = "CALL sp_concluir_os(?)";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(1, $id);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            throw new Exception("Erro ao concluir OS: " . $e->getMessage());
+        }
+    }
 }

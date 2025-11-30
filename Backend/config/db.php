@@ -23,7 +23,7 @@ class Database {
         return $this->pdo;
     }
 }
-define('BASE_URL', '/PI-2SEM-FATEC/Backend');
+define('BASE_URL', '');
 
 
 ?>
