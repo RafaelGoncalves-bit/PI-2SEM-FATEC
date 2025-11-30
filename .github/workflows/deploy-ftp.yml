@@ -13,20 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # FRONTEND (HTML/CSS/JS)
-      - name: Deploy Front pages to public_html
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
-          protocol: ftp
-          local-dir: ./pages/
-          server-dir: /public_html/
-          exclude: |
-            **/.git*
-            **/node_modules/**
-
       # BACKEND (PHP)
       - name: Deploy Backend to public_html/backend
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
@@ -36,7 +22,7 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           protocol: ftp
           local-dir: ./Backend/
-          server-dir: /public_html/backend/
+          server-dir: /public_html/
           exclude: |
             **/.git*
             **/node_modules/**            
