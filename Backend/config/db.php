@@ -5,7 +5,7 @@ class Database {
     private $host = "localhost";
     private $dbname = "sistema_agendamento";
     private $username = "u579326255.g1";
-    private $password = "Bzu$ANnL^vGRhT7^";
+    private $password = 'Bzu$ANnL^vGRhT7^';
     private $pdo;
 
     public function __construct() {
