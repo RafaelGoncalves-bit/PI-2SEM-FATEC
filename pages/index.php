@@ -1,10 +1,10 @@
-<?php include("../modelo/topo.html"); ?>
+<?php include("./modelo/topo.html"); ?>
 
 <style>
   /* HERO BANNER */
   .hero-banner {
     margin-top: 85px;
-    background: url('../img/usados2 (3).jpeg') center/cover no-repeat;
+    background: url('./img/usados2 (3).jpeg') center/cover no-repeat;
     padding: 120px 20px;
     border-radius: 12px;
     text-align: center;
@@ -91,13 +91,13 @@
 <div id="carouselMain" class="carousel slide container mt-5" data-bs-ride="carousel">
   <div class="carousel-inner rounded">
     <div class="carousel-item active">
-      <img src="../img/usados2 (1).jpeg" class="d-block w-100 img-carousel" alt="">
+      <img src="./img/usados2 (1).jpeg" class="d-block w-100 img-carousel" alt="">
     </div>
     <div class="carousel-item">
-      <img src="../img/usados (1).jpeg" class="d-block w-100 img-carousel" alt="">
+      <img src="./img/usados (1).jpeg" class="d-block w-100 img-carousel" alt="">
     </div>
     <div class="carousel-item">
-      <img src="../img/usados2 (3).jpeg" class="d-block w-100 img-carousel" alt="">
+      <img src="./img/usados2 (3).jpeg" class="d-block w-100 img-carousel" alt="">
     </div>
   </div>
 </div>
@@ -191,7 +191,7 @@
   </div>
 </section>
 
-<?php include("../modelo/rodape.html"); ?>
+<?php include("./modelo/rodape.html"); ?>
 
 <!-- CTA WhatsApp fixo -->
 <a href="https://wa.me/5519998566099" target="_blank" class="whatsapp-fixo">
