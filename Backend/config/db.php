@@ -4,8 +4,8 @@ date_default_timezone_set('America/Sao_Paulo');
 class Database {
     private $host = "localhost";
     private $dbname = "sistema_agendamento";
-    private $username = "root";
-    private $password = "";
+    private $username = "u579326255.g1";
+    private $password = "Bzu$ANnL^vGRhT7^";
     private $pdo;
 
     public function __construct() {
