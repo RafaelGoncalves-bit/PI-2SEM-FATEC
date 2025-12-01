@@ -24,16 +24,17 @@ class OrdemServicoDAO {
     }
 
     // Busca OS que ainda não tem agendamento (Para o select do formulário de agenda)
+// Backend/dao/OrdemServicoDAO.php
+
     public function listarPendentes() {
-        // Trazemos dados da OS + Nome do Cliente + ID do Orçamento
-        $sql = "SELECT os.id, c.nome as cliente_nome, o.id as orcamento_id, os.data_geracao 
+        // Traz OS + Nome do Cliente + Data Geração
+        $sql = "SELECT os.id, os.data_geracao, c.nome as cliente_nome, c.endereco 
                 FROM ordem_servico os
                 JOIN orcamento o ON os.orcamento_id = o.id
                 JOIN cliente c ON o.cliente_id = c.id
                 WHERE os.status_servico = 'Aguardando'
-                AND os.id NOT IN (SELECT ordem_servico_id FROM agendamento)
-                ORDER BY os.data_geracao ASC"; // Mostra as mais antigas primeiro
-        
+                ORDER BY os.data_geracao ASC"; // As mais antigas primeiro (fila)
+                
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

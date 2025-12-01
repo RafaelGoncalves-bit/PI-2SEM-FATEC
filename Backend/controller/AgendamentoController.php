@@ -66,6 +66,9 @@ class AgendamentoController {
             case 'concluir_os':
                 $this->concluirOS();
                 break;
+            case 'pendentes':
+                 $this->listarOSPendentes();
+                break;
         }
     }
 
@@ -182,6 +185,14 @@ class AgendamentoController {
         // Volta para a lista de OS
         header('Location: AgendamentoController.php?acao=listar_os');
         exit;
+    }
+
+    private function listarOSPendentes() {
+        // Busca apenas as OS com status 'Aguardando'
+        $listaPendentes = $this->ordemServicoDAO->listarPendentes();
+        
+        // Carrega a view específica
+        require_once __DIR__ . '/../view/agendamento/pendentes.php';
     }
 }
 

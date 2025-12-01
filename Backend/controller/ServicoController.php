@@ -54,6 +54,9 @@ class ServicoController {
             default:
                 $this->listarServicos();
                 break;
+            case 'novo':
+                $this->mostrarFormularioCadastro();
+                break;
         }
     }
 
@@ -145,6 +148,10 @@ class ServicoController {
 
         header('Location: ServicoController.php?acao=listar');
         exit;
+    }
+
+    private function mostrarFormularioCadastro() {
+        require_once __DIR__ . '/../view/servico/new.php';
     }
 }
 

@@ -52,6 +52,9 @@ class ClienteController {
             default:
                 $this->listarClientes();
                 break;
+            case 'novo':
+                $this->mostrarFormularioCadastro();
+                break;
         }
     }
 
@@ -161,6 +164,11 @@ class ClienteController {
 
         header('Location: ClienteController.php?acao=listar');
         exit;
+    }
+
+    private function mostrarFormularioCadastro() {
+        // Manda tudo para a View
+        require_once __DIR__ . '/../view/cliente/new.php';
     }
 }
 

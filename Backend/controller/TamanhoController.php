@@ -54,6 +54,9 @@ class TamanhoController {
             default:
                 $this->listarTamanhos();
                 break;
+            case 'novo':
+                $this->mostrarFormularioCadastro();
+                break;
         }
     }
 
@@ -141,6 +144,10 @@ class TamanhoController {
 
         header('Location: TamanhoController.php?acao=listar');
         exit;
+    }
+    
+    private function mostrarFormularioCadastro() {
+        require_once __DIR__ . '/../view/tamanho/new.php';
     }
 }
 

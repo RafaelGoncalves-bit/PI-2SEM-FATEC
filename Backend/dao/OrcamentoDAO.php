@@ -67,11 +67,11 @@ class OrcamentoDAO {
     // R - LISTAR TODOS (Com JOIN para pegar o nome do cliente)
     // ==================================================================
     public function listarTodos() {
-        // JOIN: Cruzamos a tabela orcamento com a cliente para mostrar o nome na tela
-        $sql = "SELECT o.*, c.nome AS nome_cliente 
+        // Correção: Fazemos o JOIN para criar a coluna "cliente_nome" virtualmente
+        $sql = "SELECT o.*, c.nome as cliente_nome 
                 FROM orcamento o
-                JOIN cliente c ON o.cliente_id = c.id 
-                ORDER BY o.data_emissao DESC";
+                JOIN cliente c ON o.cliente_id = c.id
+                ORDER BY o.id DESC";
         
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

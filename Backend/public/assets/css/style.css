@@ -1,75 +1,119 @@
-html,
+/* =========================================
+   1. VARIÁVEIS GLOBAIS & RESET
+   ========================================= */
+:root {
+    --primary-gradient: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --bg-light: #f8f9fa;
+    --shadow-soft: 0 4px 12px rgba(0,0,0,0.1);
+    --shadow-hover: 0 8px 16px rgba(0,0,0,0.15);
+}
+
 body {
-    height: 100%;
-    margin: 0;
+    background-color: var(--bg-light);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-.background-cadastro{
-    background-image: linear-gradient(20deg, blueviolet, black, darkblue);
+/* =========================================
+   2. NAVBAR (Barra de Navegação)
+   ========================================= */
+.navbar-custom {
+    background: var(--primary-gradient);
+    box-shadow: var(--shadow-soft);
+    padding: 0.8rem 1rem;
+    z-index: 1000;
 }
 
-
-main {
-    flex: 1;
-    /* ocupa o espaço restante */
+.navbar-custom .navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+    color: #fff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.login-card{
-            background: #ffffff;
-            width: 420px;
-            max-height: 1000px; /* mantém formato quadrado */
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-            padding: 28px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        @media (max-width: 480px){
-            .login-card{
-                width: 90vw;
-                height: 90vw;
-                padding: 20px;
-            }
-        }
-
-        .link-card {
-            display: block;
-            margin-top: 8px;
-            color: darkblue;
-            text-decoration: none;
-        }
-
-.topo {
-   background-color: #ff6600;
+.navbar-custom .nav-link {
+    color: rgba(255,255,255,0.85) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+    padding: 0.5rem 1.2rem !important;
+    margin: 0 2px;
 }
 
-.rodape {
-    background-color: #ff6600;
-    width: 100%;
-    padding: 15px;
+.navbar-custom .nav-link:hover {
+    background-color: rgba(255,255,255,0.15);
+    color: #fff !important;
+    transform: translateY(-1px);
+}
+
+/* Link Ativo (Página Atual) */
+.navbar-custom .nav-link.active-menu {
+    background-color: #fff;
+    color: #0a58ca !important;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Dropdown Menu */
+.navbar-custom .dropdown-menu {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.navbar-custom .dropdown-item {
+    padding: 10px 20px;
+    font-weight: 500;
+    color: #444;
+}
+
+.navbar-custom .dropdown-item:hover {
+    background-color: #f0f7ff;
+    color: var(--primary-color);
+}
+
+.navbar-custom .dropdown-header {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Botão Sair */
+.btn-sair {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.btn-sair:hover {
+    background-color: #dc3545;
+    border-color: #dc3545;
     color: white;
-
 }
 
-.texto-rodape {
-    margin: 1%;
-    margin-left: 25%;
-    ;
+/* =========================================
+   3. DESIGN GERAL DE CARDS & BOTÕES
+   ========================================= */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.2s;
+    background: #fff;
 }
 
-.texto-centro{
-    text-align: center;
-}
-
-
-.flax {
-    display: flex;
-}
-
-.branco {
-    color: white;
+/* Títulos das páginas */
+h2, h3 {
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 15px;
 }
