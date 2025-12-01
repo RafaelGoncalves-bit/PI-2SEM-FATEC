@@ -23,7 +23,7 @@ class Database {
         return $this->pdo;
     }
 }
-define('BASE_URL', 'https://g1.brunohpro.com.br/public_html/g1');
+define('BASE_URL', 'g1.brunohpro.com.br/public_html/g1');
 
 
 ?>
