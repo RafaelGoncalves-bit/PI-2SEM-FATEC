@@ -27,8 +27,8 @@ require_once __DIR__ . '/../../controller/TamanhoController.php';
                     <td><?= $tamanho['dimensao'] ?></td>
                     <td><?= number_format($tamanho['multiplicador_preco'], 2, '.', ',') ?>X</td>
                     <td>
-                        <a href="../../Backend/controller/TamanhoController.php?acao=editar&id=<?= $tamanho['id'] ?>">Editar</a> | 
-                        <a href="../../Backend/controller/TamanhoController.php?acao=excluir&id=<?= $tamanho['id'] ?>" 
+                        <a href="<?= BASE_URL ?>/controller/TamanhoController.php?acao=editar&id=<?= $tamanho['id'] ?>">Editar</a> | 
+                        <a href="<?= BASE_URL ?>/controller/TamanhoController.php?acao=excluir&id=<?= $tamanho['id'] ?>" 
                            onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
                     </td>
                 </tr>

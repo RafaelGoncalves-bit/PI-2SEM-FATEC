@@ -10,7 +10,7 @@
         </div>
         <div class="card-body">
             
-            <form action="../../Backend/controller/AgendamentoController.php?acao=salvar" method="POST">
+            <form action="<?= BASE_URL ?>/controller/AgendamentoController.php?acao=salvar" method="POST">
 
                 <div class="mb-3">
                     <label class="form-label">Qual serviço será realizado?</label>
@@ -55,7 +55,7 @@
 
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-success btn-lg">Confirmar Agendamento</button>
-                    <a href="../../Backend/controller/AgendamentoController.php?acao=listar" class="btn btn-secondary">Cancelar</a>
+                    <a href="<?= BASE_URL ?>/controller/AgendamentoController.php?acao=listar" class="btn btn-secondary">Cancelar</a>
                 </div>
 
             </form>

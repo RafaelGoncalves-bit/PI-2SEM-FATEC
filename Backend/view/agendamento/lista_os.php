@@ -60,7 +60,7 @@
                                         <span class="badge bg-success">Finalizado em <?= date('d/m', strtotime($os['data_conclusao'])) ?></span>
                                     <?php endif; ?>
 
-                                    <a href="../../Backend/controller/OrcamentoController.php?acao=detalhes&id=<?= $os['orcamento_id'] ?>" 
+                                    <a href="<?= BASE_URL ?>/controller/OrcamentoController.php?acao=detalhes&id=<?= $os['orcamento_id'] ?>" 
                                        class="btn btn-sm btn-info text-white">👁️ Ver Pedido</a>
                                 </td>
                             </tr>

@@ -35,8 +35,8 @@ require_once __DIR__ . '/../../controller/ClienteController.php';
                     <td><?= $cliente['tipo'] ?></td>
                     <td><?= $cliente['documento'] ?></td>
                     <td>
-                        <a href="../../Backend/controller/ClienteController.php?acao=editar&id=<?= $cliente['id'] ?>">Editar</a> | 
-                        <a href="../../Backend/controller/ClienteController.php?acao=excluir&id=<?= $cliente['id'] ?>" 
+                        <a href="<?= BASE_URL ?>/controller/ClienteController.php?acao=editar&id=<?= $cliente['id'] ?>">Editar</a> | 
+                        <a href="<?= BASE_URL ?>/controller/ClienteController.php?acao=excluir&id=<?= $cliente['id'] ?>" 
                            onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
                     </td>
                 </tr>
