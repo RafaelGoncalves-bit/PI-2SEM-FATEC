@@ -5,7 +5,7 @@ session_start(); // Inicia a sessão para ler os dados
 // Se não tiver a variável 'usuario_id' na sessão, é porque não logou.
 if (!isset($_SESSION['usuario_id'])) {
     // Redireciona para o login
-    header('Location: ' . BASE_URL . '/view/funcionario/login.php');
+    header('Location: ../view/funcionario/login.php');
     exit; // Mata o script aqui
 }
 
@@ -18,7 +18,7 @@ require_once __DIR__ . '/../model/ItemOrcamentoModel.php';
 // Importa TODOS os DAOs necessários
 require_once __DIR__ . '/../dao/OrcamentoDAO.php';
 require_once __DIR__ . '/../dao/ClienteDAO.php';
-require_once __DIR__ . '/dao/ServicoDAO.php';
+require_once __DIR__ . '/../dao/ServicoDAO.php';
 require_once __DIR__ . '/../dao/TamanhoDAO.php';
 
 class OrcamentoController {
