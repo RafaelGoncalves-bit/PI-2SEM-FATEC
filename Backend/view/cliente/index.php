@@ -1,7 +1,6 @@
 <?php 
 require_once __DIR__ . '/../partials/header.php';
 require_once __DIR__ . '/../partials/navbar.php';
-require_once __DIR__ . '/../../controller/ClienteController.php';
 ?>
 
 <table class="table">
