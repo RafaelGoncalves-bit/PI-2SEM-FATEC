@@ -22,7 +22,7 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           protocol: ftp
           local-dir: ./Backend/
-          server-dir: /public_html/
+          server-dir: /
           exclude: |
             **/.git*
             **/node_modules/**            
