@@ -23,7 +23,7 @@ class Database {
         return $this->pdo;
     }
 }
-define('BASE_URL', 'public_html/g1/');
+define('BASE_URL', '');
 
 
 ?>
