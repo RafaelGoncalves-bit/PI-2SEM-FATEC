@@ -1,4 +1,5 @@
 <?php
+
 session_start(); // Inicia a sessão para ler os dados
 
 // TRAVA DE SEGURANÇA
@@ -29,7 +30,7 @@ class AgendamentoController {
     const HORA_INICIO = 7; 
     const HORA_FIM = 18;    
     const INTERVALO_HORAS = 2; 
-    const DIAS_PROIBIDOS = [0]; 
+    const DIAS_PROIBIDOS = [0,6]; 
 
     public function __construct() {
         $db = new Database();
@@ -69,6 +70,9 @@ class AgendamentoController {
             case 'pendentes':
                  $this->listarOSPendentes();
                 break;
+            case 'ver_disponibilidade':
+                $this->verDisponibilidade();
+                break;
         }
     }
 
@@ -98,35 +102,23 @@ class AgendamentoController {
         $dataHoraInput = $_POST['data_hora']; 
 
         try {
-            // ... (VALIDAÇÕES DE HORÁRIO MANTIDAS IGUAIS) ...
-            // Vou resumir as validações aqui para focar na correção do salvamento
+            // ... (VALIDAÇÕES DE HORÁRIO BÁSICAS (A e B) MANTIDAS) ...
             
             $dataDesejada = new DateTime($dataHoraInput);
             
-            // A. Dia da Semana
+            // A. Dia da Semana (Fica)
             $diaSemana = (int)$dataDesejada->format('w');
             if (in_array($diaSemana, self::DIAS_PROIBIDOS)) {
-                die("Erro: Não trabalhamos aos Domingos.");
+                throw new Exception("Não trabalhamos aos Sabados e aos Domingos.");
             }
 
-            // B. Horário
+            // B. Horário (Fica)
             $hora = (int)$dataDesejada->format('H');
             if ($hora < self::HORA_INICIO || $hora >= self::HORA_FIM) {
-                die("Erro: Horário inválido.");
+                throw new Exception("Horário inválido. Atendemos de " . self::HORA_INICIO . ":00 às " . self::HORA_FIM . ":00.");
             }
-
-            // C. Conflito de 2 horas
-            $diaString = $dataDesejada->format('Y-m-d');
-            $agendamentosExistentes = $this->agendamentoDAO->buscarAgendamentosDoDia($funcionarioId, $diaString);
-
-            foreach ($agendamentosExistentes as $horarioOcupado) {
-                $dataOcupada = new DateTime($horarioOcupado);
-                $intervalo = $dataDesejada->diff($dataOcupada);
-                $horasDeDiferenca = $intervalo->h + ($intervalo->days * 24);
-                
-                if ($horasDeDiferenca < self::INTERVALO_HORAS) {
-                    die("Erro de Conflito: Necessário intervalo de " . self::INTERVALO_HORAS . " horas.");
-                }
+            if ($this->agendamentoDAO->verificarConflitoDeHorario($funcionarioId, $dataHoraInput)) {
+                throw new Exception("CONFLITO! O funcionário já tem um serviço agendado dentro do intervalo de +/- " . self::INTERVALO_HORAS . " horas da hora proposta.");
             }
 
             // --- AQUI ESTÁ A GRANDE CORREÇÃO ---
@@ -142,11 +134,27 @@ class AgendamentoController {
 
             $this->ordemServicoDAO->atualizarStatus($osId, 'Agendado');
             
-            echo "Sucesso! Agendado.";
-            // header('Location: ...');
+// --- CÓDIGO REFATORADO PARA MOSTRAR POPUP E REDIRECIONAR ---
+            
+            // Usamos JavaScript para mostrar a mensagem de sucesso e redirecionar.
+            // O \n no alert quebra a linha para melhor visualização
+            $dataObj = new DateTime($dataHoraInput);
+            $dataHoraFormatada = $dataObj->format('d/m/Y') . ' às ' . $dataObj->format('H:i');
 
+            echo "<script>
+                alert('🎉 Sucesso! Agendamento criado.\\n\\nOS #$osId agendada para $dataHoraFormatada .');
+                window.location.href = 'AgendamentoController.php?acao=agenda';
+            </script>";
+            exit; // Mata o script após o echo para garantir que o JS execute
+            
         } catch (Exception $e) {
-            echo "Erro: " . $e->getMessage();
+            // Se houver qualquer erro de conflito, ele aparecerá aqui.
+            $erroMsg = str_replace(array("\n", "\r"), ' ', $e->getMessage());
+            echo "<script>
+                alert('❌ Erro ao agendar: $erroMsg');
+                window.history.back();
+            </script>";
+            exit;
         }
     }
 
@@ -161,18 +169,18 @@ class AgendamentoController {
     }
 
     private function cancelarAgendamento() {
-        // Pega o ID do AGENDAMENTO (não da OS)
         $id = $_GET['id'] ?? null;
         
         if ($id) {
             try {
                 $this->agendamentoDAO->cancelar($id);
             } catch (Exception $e) {
-                // Opcional: tratar erro
+                // AGORA MOSTRAMOS O ERRO
+                echo "<script>alert('Erro ao cancelar: " . $e->getMessage() . "'); window.history.back();</script>";
+                exit; 
             }
         }
         
-        // Volta para a Agenda
         header('Location: AgendamentoController.php?acao=agenda');
         exit;
     }
@@ -193,6 +201,24 @@ class AgendamentoController {
         
         // Carrega a view específica
         require_once __DIR__ . '/../view/agendamento/pendentes.php';
+    }
+
+    private function verDisponibilidade() {
+        $funcionarioId = $_GET['funcionario_id'] ?? null;
+        
+        if ($funcionarioId) {
+            // Reutilizamos a lógica do DAO (listarCronologico, mas filtrando)
+            // NOTA: Você precisará adicionar um método no DAO para buscar por ID de funcionário
+            $agenda = $this->agendamentoDAO->listarPorFuncionario($funcionarioId);
+            
+            // Define o cabeçalho para o navegador entender que é JSON
+            header('Content-Type: application/json');
+            echo json_encode($agenda);
+        } else {
+            header('Content-Type: application/json');
+            echo json_encode([]);
+        }
+        exit;
     }
 }
 

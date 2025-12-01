@@ -2,7 +2,7 @@
 session_start();
 // Se não estiver logado, manda pro login
 if (!isset($_SESSION['usuario_id'])) {
-    header('Location: view/login.php');
+    header('Location: view/funcionario/login.php');
     exit;
 }
 
