@@ -44,14 +44,23 @@ Interface visual (HTML/CSS/Bootstrap).
 
 ## 📁 Estrutura de Pastas
 
-    /src
+    /Backend
      ├── /controller
      ├── /model
      ├── /dao
      ├── /view
      ├── /config
      └── /assets
-    /docs
+    /Documentação
+    ├── diagramas
+    ├── Documentação PI
+    └── Requisitos
+     /Banco de Dados
+    ├── Modelo conceitual
+    ├── Modelo lógico
+    └── Modelo físico
+    /.github
+    └── workflows
     README.md
     LICENSE
 
@@ -78,8 +87,6 @@ Interface visual (HTML/CSS/Bootstrap).
 
 -   [Cauã Porciuncula](https://github.com/Khaleb457)
 -   [Rafael Lima](https://github.com/RafaelGoncalves-bit)
--   [Kaua Xavier](https://github.com/KauaXavier1)
--   [Matheus Eduardo](https://github.com/Matheus58898)
 
 
 ------------------------------------------------------------------------
