@@ -18,7 +18,7 @@ require_once __DIR__ . '/../model/ItemOrcamentoModel.php';
 // Importa TODOS os DAOs necessários
 require_once __DIR__ . '/../dao/OrcamentoDAO.php';
 require_once __DIR__ . '/../dao/ClienteDAO.php';
-require_once __DIR__ . '/../dao/ServicoDAO.php';
+require_once __DIR__ . '/dao/ServicoDAO.php';
 require_once __DIR__ . '/../dao/TamanhoDAO.php';
 
 class OrcamentoController {
