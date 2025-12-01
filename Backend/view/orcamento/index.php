@@ -47,7 +47,7 @@
                                 👁️ Ver Itens
                             </a>
                                 <?php if ($orcamento['status'] !== 'Cancelado'): ?>
-                                    <a href="../../Backend/controller/OrcamentoController.php?acao=cancelar&id=<?= $orcamento['id'] ?>" 
+                                    <a href="<?= BASE_URL ?>/controller/OrcamentoController.php?acao=cancelar&id=<?= $orcamento['id'] ?>" 
                                     class="btn btn-warning btn-sm"
                                     onclick="return confirm('Tem certeza? O orçamento será marcado como CANCELADO e não poderá ser recuperado.');">
                                         🚫 </a>

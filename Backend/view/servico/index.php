@@ -29,8 +29,8 @@ require_once __DIR__ . '/../../controller/ServicoController.php';
                     <td><?= $servico['descricao'] ?></td>
                     <td>R$ <?= number_format($servico['preco_base'], 2, ',', '.') ?></td>
                     <td>
-                        <a href="../../Backend/controller/ServicoController.php?acao=editar&id=<?= $servico['id'] ?>">Editar</a> | 
-                        <a href="../../Backend/controller/ServicoController.php?acao=excluir&id=<?= $servico['id'] ?>" 
+                        <a href="<?= BASE_URL ?>/controller/ServicoController.php?acao=editar&id=<?= $servico['id'] ?>">Editar</a> | 
+                        <a href="<?= BASE_URL ?>/controller/ServicoController.php?acao=excluir&id=<?= $servico['id'] ?>" 
                            onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
                     </td>
                 </tr>

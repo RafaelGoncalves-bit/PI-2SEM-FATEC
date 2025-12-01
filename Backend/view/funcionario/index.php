@@ -29,8 +29,8 @@ require_once __DIR__ . '/../../controller/FuncionarioController.php';
                     <td><?= $funcionario['email'] ?></td>
                     <td><?= $funcionario['telefone']?></td>
                     <td>
-                        <a href="../../Backend/controller/FuncionarioController.php?acao=editar&id=<?= $funcionario['id'] ?>">Editar</a> | 
-                        <a href="../../Backend/controller/FuncionarioController.php?acao=excluir&id=<?= $funcionario['id'] ?>" 
+                        <a href="<?= BASE_URL ?>/controller/FuncionarioController.php?acao=editar&id=<?= $funcionario['id'] ?>">Editar</a> | 
+                        <a href="<?= BASE_URL ?>/controller/FuncionarioController.php?acao=excluir&id=<?= $funcionario['id'] ?>" 
                            onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
                     </td>
                 </tr>
