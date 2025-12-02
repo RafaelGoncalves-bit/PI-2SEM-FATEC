@@ -148,13 +148,32 @@ class AgendamentoController {
             exit; // Mata o script após o echo para garantir que o JS execute
             
         } catch (Exception $e) {
-            // Se houver qualquer erro de conflito, ele aparecerá aqui.
-            $erroMsg = str_replace(array("\n", "\r"), ' ', $e->getMessage());
-            echo "<script>
-                alert('❌ Erro ao agendar: $erroMsg');
-                window.history.back();
-            </script>";
-            exit;
+                $fullErrorMsg = $e->getMessage();
+                $cleanErrorMsg = '';
+    
+                // 1. Tenta identificar e limpar a mensagem do MySQL Trigger (Erro 1644)
+                $triggerMarker = '1644 Erro:';
+                $triggerPos = strpos($fullErrorMsg, $triggerMarker);
+    
+                if ($triggerPos !== false) {
+                    // Se o marcador for encontrado, extrai a mensagem limpa
+                    $cleanErrorMsg = trim(substr($fullErrorMsg, $triggerPos + strlen($triggerMarker)));
+                } else {
+                    // 2. Para todos os outros erros (Conflito de 2 horas, etc.)
+                    $cleanErrorMsg = str_replace(array("\n", "\r"), ' ', $fullErrorMsg);
+                }
+    
+                // 3. Fallback (Garantia de que a mensagem não fique vazia)
+                if (empty($cleanErrorMsg)) {
+                    $cleanErrorMsg = "Ocorreu um erro desconhecido ao agendar. Verifique o log.";
+                }
+    
+                // Exibe a mensagem de erro limpa no pop-up
+                echo "<script>
+                    alert('❌ Erro ao agendar: $cleanErrorMsg');
+                    window.history.back();
+                </script>";
+                exit;
         }
     }
 
