@@ -43,7 +43,7 @@ require_once __DIR__ . '/../partials/header.php';
         <div class="text-center mt-3">
             <small class="text-muted">
                 Login de Teste:<br>
-                <strong>admin1@empresa.com</strong> / <strong>123456</strong>
+                <strong>admin@empresa.com</strong> / <strong>123456</strong>
             </small>
         </div>
     </div> 
