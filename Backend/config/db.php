@@ -3,9 +3,9 @@ date_default_timezone_set('America/Sao_Paulo');
 
 class Database {
     private $host = "localhost";
-    private $dbname = "sistema_agendamento";
-    private $username = "root";
-    private $password = "";
+    private $dbname = "u579326255_g1";
+    private $username = "u579326255_g1";
+    private $password = "Uo5@Q:djSd";
     private $pdo;
 
     public function __construct() {
@@ -23,7 +23,7 @@ class Database {
         return $this->pdo;
     }
 }
-define('BASE_URL', '/PI-2SEM-FATEC/Backend');
+define('BASE_URL', 'https://g1.brunohpro.com.br/public_html/g1');
 
 
 ?>
