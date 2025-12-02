@@ -63,4 +63,50 @@ class AgendamentoDAO {
             throw new Exception("Erro ao cancelar agendamento: " . $e->getMessage());
         }
     }
+
+    public function listarPorFuncionario($funcionarioId) {
+        $sql = "SELECT a.data_agendamento, c.nome as cliente_nome, os.id as os_id
+                FROM agendamento a
+                JOIN ordem_servico os ON a.ordem_servico_id = os.id
+                JOIN orcamento o ON os.orcamento_id = o.id
+                JOIN cliente c ON o.cliente_id = c.id
+                WHERE a.funcionario_id = ? AND a.status = 'Ativo'
+                ORDER BY a.data_agendamento ASC";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(1, $funcionarioId);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // No arquivo Backend/dao/AgendamentoDAO.php
+
+public function verificarConflitoDeHorario(int $funcionarioId, string $dataAgendamento): bool {
+    // 1. Converte a data/hora proposta para um timestamp (para cálculos)
+    $propostoTimestamp = strtotime($dataAgendamento);
+
+    // 2. Calcula o limite inferior (proposto - 2 horas)
+    // 3600 segundos = 1 hora
+    $limiteInferior = date('Y-m-d H:i:s', $propostoTimestamp - (2 * 3600));
+
+    // 3. Calcula o limite superior (proposto + 2 horas)
+    $limiteSuperior = date('Y-m-d H:i:s', $propostoTimestamp + (2 * 3600));
+
+    // SQL: Busca por agendamentos ativos para o funcionário DENTRO da janela de conflito
+    $sql = "SELECT COUNT(*) 
+            FROM agendamento 
+            WHERE funcionario_id = ? 
+            AND status = 'Ativo' 
+            AND data_agendamento >= ? 
+            AND data_agendamento <= ?";
+    
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(1, $funcionarioId);
+    $stmt->bindValue(2, $limiteInferior);
+    $stmt->bindValue(3, $limiteSuperior);
+    $stmt->execute();
+    
+    // Se o COUNT for maior que 0, há um conflito (true)
+    return $stmt->fetchColumn() > 0;
+}
 }

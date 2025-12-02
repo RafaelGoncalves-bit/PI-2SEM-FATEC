@@ -10,6 +10,7 @@ class ItemOrcamentoModel {
     private float $valorCalculado; // Preço final deste item (Unitário * Qtd * Tamanho)
     private ?string $nomeServico = null;
     private ?string $nomeTamanho = null;
+    private $multiplicadorPreco;
 
     // Getters e Setters
     public function getId(): ?int {
@@ -67,5 +68,13 @@ class ItemOrcamentoModel {
     }
     public function getNomeTamanho() { 
         return $this->nomeTamanho; 
+    }
+
+    public function getMultiplicadorPreco() {
+        return $this->multiplicadorPreco;
+    }
+
+    public function setMultiplicadorPreco($multiplicadorPreco) {
+        $this->multiplicadorPreco = $multiplicadorPreco;
     }
 }

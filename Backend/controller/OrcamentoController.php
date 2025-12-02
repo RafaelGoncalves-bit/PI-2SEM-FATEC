@@ -65,7 +65,7 @@ class OrcamentoController {
     // 1. LISTAGEM (Simples)
     // =========================================================================
     private function listarOrcamentos() {
-        $lista = $this->orcamentoDAO->listarTodos();
+        $listaOrcamentos = $this->orcamentoDAO->listarTodos();
         require_once __DIR__ . '/../view/orcamento/index.php';
     }
 

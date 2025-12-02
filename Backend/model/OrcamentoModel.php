@@ -7,6 +7,7 @@ class OrcamentoModel {
     private string $dataEmissao;
     private float $valorTotal;
     private string $status; // 'Pendente', 'Aprovado', 'Rejeitado'
+    private $nomeCliente;
     
     // PROPRIEDADE ESPECIAL (Não é coluna no banco, mas ajuda na lógica)
     // Vai guardar uma lista de objetos ItemOrcamentoModel
@@ -60,5 +61,14 @@ class OrcamentoModel {
 
     public function getItens(): array {
         return $this->itens;
+    }
+    
+    // --- NOME DO CLIENTE ---
+    public function setNomeCliente($nome) {
+        $this->nomeCliente = $nome;
+    }
+
+    public function getNomeCliente() {
+        return $this->nomeCliente;
     }
 }

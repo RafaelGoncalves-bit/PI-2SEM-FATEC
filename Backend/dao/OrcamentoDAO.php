@@ -67,11 +67,11 @@ class OrcamentoDAO {
     // R - LISTAR TODOS (Com JOIN para pegar o nome do cliente)
     // ==================================================================
     public function listarTodos() {
-        // JOIN: Cruzamos a tabela orcamento com a cliente para mostrar o nome na tela
-        $sql = "SELECT o.*, c.nome AS nome_cliente 
+        // Correção: Fazemos o JOIN para criar a coluna "cliente_nome" virtualmente
+        $sql = "SELECT o.*, c.nome as cliente_nome 
                 FROM orcamento o
-                JOIN cliente c ON o.cliente_id = c.id 
-                ORDER BY o.data_emissao DESC";
+                JOIN cliente c ON o.cliente_id = c.id
+                ORDER BY o.id DESC";
         
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -81,8 +81,12 @@ class OrcamentoDAO {
     // R - BUSCAR COMPLETO (Recupera Mestre + Itens)
     // ==================================================================
     public function buscarPorId($id) {
-        // 1. Busca o Mestre
-        $sql = "SELECT * FROM orcamento WHERE id = ?";
+        // 1. Busca o Mestre (Orcamento) + o Nome do Cliente (JOIN)
+        $sql = "SELECT o.*, c.nome as cliente_nome
+                FROM orcamento o
+                JOIN cliente c ON o.cliente_id = c.id
+                WHERE o.id = ?";
+        
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, $id);
         $stmt->execute();
@@ -98,12 +102,15 @@ class OrcamentoDAO {
         $orcamento->setValorTotal($dadoOrcamento['valor_total']);
         $orcamento->setStatus($dadoOrcamento['status']);
 
-        // 2. Busca os Itens desse orçamento
-        $sqlItens = "SELECT i.*, s.nome as nome_servico, t.dimensao 
-                     FROM item_orcamento i
-                     JOIN servico s ON i.servico_id = s.id
-                     JOIN tamanho t ON i.tamanho_id = t.id
-                     WHERE i.orcamento_id = ?";
+        // *** PASSO CRÍTICO: INJETAR O NOME DO CLIENTE ***
+        $orcamento->setNomeCliente($dadoOrcamento['cliente_nome']);
+
+        // 2. Busca os Itens desse orçamento (Esta lógica continua perfeita)
+        $sqlItens = "SELECT i.*, s.nome as nome_servico, t.dimensao, t.multiplicador_preco
+                    FROM item_orcamento i
+                    JOIN servico s ON i.servico_id = s.id
+                    JOIN tamanho t ON i.tamanho_id = t.id
+                    WHERE i.orcamento_id = ?";
         
         $stmtItens = $this->pdo->prepare($sqlItens);
         $stmtItens->bindValue(1, $id);
@@ -119,9 +126,11 @@ class OrcamentoDAO {
             $item->setTamanhoId($row['tamanho_id']);
             $item->setQuantidade($row['quantidade']);
             $item->setValorCalculado($row['valor_calculado']);
-            $item->setNomeServico($row['nome_servico']); // O alias que usamos no SQL
-            $item->setNomeTamanho($row['dimensao']);
             
+            // Dados do JOIN para a View
+            $item->setNomeServico($row['nome_servico']);
+            $item->setNomeTamanho($row['dimensao']);
+            $item->setMultiplicadorPreco($row['multiplicador_preco']);        
             // Adiciona na lista interna do Model
             $orcamento->addItem($item);
         }
